@@ -112,7 +112,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # superuser: ananisikem940706
 # pass: sanane940706
-# test git
 
 
 # Internationalization
