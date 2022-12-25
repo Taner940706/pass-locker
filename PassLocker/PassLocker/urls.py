@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('PassLocker.accounts.urls')),
     path('locker/', include('PassLocker.main.urls')),
+    path('group/', include('PassLocker.groups.urls')),
 ]
 
 if settings.DEBUG:

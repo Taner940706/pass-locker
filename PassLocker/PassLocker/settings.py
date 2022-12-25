@@ -42,8 +42,8 @@ INSTALLED_APPS = [
 
     'PassLocker.accounts',
     'PassLocker.main',
-    'PassLocker.my_team',
-    'PassLocker.personal',
+    'PassLocker.groups',
+
 ]
 
 MIDDLEWARE = [
