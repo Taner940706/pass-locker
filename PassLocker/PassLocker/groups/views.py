@@ -3,7 +3,7 @@ from django.views import generic as views
 # Create your views here.
 
 
-class DetailsGroupView(views.DetailView):
+class ListGroupView(views.ListView):
     template_name = 'groups/details-group-page.html'
 
 
