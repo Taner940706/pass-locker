@@ -7,9 +7,11 @@ cffi==1.15.1
 charset-normalizer==2.1.1
 cleo==1.0.0a5
 crashtest==0.3.1
+crispy-bootstrap5==0.7
 cryptography==37.0.4
 distlib==0.3.6
 Django==4.1.4
+django-crispy-forms==1.14.0
 dulwich==0.20.46
 filelock==3.8.0
 html5lib==1.1

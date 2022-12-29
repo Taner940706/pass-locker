@@ -51,7 +51,7 @@ class MainCreateForm(MainBaseForm):
     pass
 
 
-class MianEditForm(MainBaseForm):
+class MainEditForm(MainBaseForm):
     pass
 
 
