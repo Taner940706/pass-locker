@@ -1,3 +1,5 @@
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 from django import forms
 
 from PassLocker.core.form_mixins import DisabledFormMixin
@@ -20,6 +22,10 @@ class GroupBaseForm(forms.ModelForm):
                 }
             ),
         }
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.add_input(Submit('submit', 'Submit'))
 
 
 class GroupCreateForm(GroupBaseForm):

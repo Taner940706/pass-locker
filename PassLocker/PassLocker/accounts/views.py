@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, get_user_model, login
 
-from PassLocker.accounts.forms import UserCreationForm
+from PassLocker.accounts.forms import UserCreateForm
 
 UserModel = get_user_model()
 
@@ -13,8 +13,8 @@ class SignInView(auth_views.LoginView):
 
 class SignUpView(views.CreateView):
     template_name = 'accounts/register-page.html'
-    form_class = UserCreationForm
-    success_url = reverse_lazy('main')
+    form_class = UserCreateForm
+    success_url = reverse_lazy('login user')
 
     def form_valid(self, form):
         result = super().form_valid(form)
