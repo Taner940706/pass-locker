@@ -16,8 +16,63 @@
 </head>
 <body>
 
-{% crispy form %}
-    {% csrf_token %}
+<form class="form-horizontal" action="{% url 'delete user' pk=object.pk %}" method="post" id="deleteUserForm"
+          enctype="multipart/form-data">
+        <fieldset>
+            <section class="vh-50">
+                <div class="container py-5 h-40">
+                    <div class="row d-flex justify-content-center align-items-center h-30">
+                        <div class="col-12 col-md-8 col-lg-7 col-xl-5">
+                            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                                <div class="card-body p-5 text-center">
+                                    <h2>Delete profile</h2>
+                                    <div class="form-group">
+                                        <label for="username" class="sr-only">Username:</label>
+                                        <input type="text" id="username" name="username"
+                                               value="{{ request.user.username }}" class="form-control"
+                                               disabled="disabled" readonly="readonly">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="email" class="sr-only">Email:</label>
+                                        <input type="text" id="email" name="email" value="{{ request.user.email }}"
+                                               class="form-control" disabled="disabled" readonly="readonly">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="first_name" class="sr-only">First name:</label>
+                                        <input type="text" id="first_name" name="first_name"
+                                               value="{{ request.user.first_name }}" class="form-control"
+                                               disabled="disabled" readonly="readonly">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="last_name" class="sr-only">Last name:</label>
+                                        <input type="text" id="last_name" name="last_name"
+                                               value="{{ request.user.last_name }}" class="form-control"
+                                               disabled="disabled" readonly="readonly">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="department" class="sr-only">Department:</label>
+                                        <input type="text" id="department" name="department"
+                                               value="{{ request.user.department }}" class="form-control"
+                                               disabled="disabled" readonly="readonly">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="picture" class="sr-only">Picture:</label>
+                                        <input type="url" id="picture" name="picture" value="{{ request.user.picture }}"
+                                               class="form-control" disabled="disabled" readonly="readonly">
+                                    </div>
+                                    <hr/>
+                                    <input type="submit" id="btn-register" class="btn btn-danger btn-lg btn-block"
+                                           value="Delete">
+                                    {% csrf_token %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </fieldset>
+    </form>
 
 </body>
 </html>

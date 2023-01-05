@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, get_user_model, login
 
-from PassLocker.accounts.forms import UserCreateForm
+from PassLocker.accounts.forms import UserCreateForm, UserEditForm
 
 UserModel = get_user_model()
 
@@ -34,16 +34,17 @@ class UserDetailsView(views.DetailView):
 class UserEditView(views.UpdateView):
     template_name = 'accounts/user-edit-page.html'
     model = UserModel
-    fields = ('__all__')
+    form_class = UserEditForm
 
     def get_success_url(self):
-        return reverse_lazy('main')
+        pk = self.kwargs['pk']
+        return reverse_lazy('edit user', kwargs={'pk': pk})
 
 
 class UserDeleteView(views.DeleteView):
     template_name = 'accounts/user-delete-page.html'
     model = UserModel
-    success_url = reverse_lazy('main')
+    success_url = reverse_lazy('register user')
 
 
 class SignOutView(auth_views.LogoutView):
