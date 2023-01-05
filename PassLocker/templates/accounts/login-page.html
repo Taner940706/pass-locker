@@ -20,10 +20,26 @@
 <body>
 <form class="form-horizontal" id="createNewModemForm" action="{% url 'login user' %}" method="POST"
                   enctype="multipart/form-data">
-    {{ form|crispy }}
-    <input type="hidden" name="next" value="{{ next }}">
-    <input type="submit" name="submit" value="Submit" class="btn btn-primary" id="submit-id-submit">
-    {% csrf_token %}
+    <fieldset>
+    <h1 id="login_h1">PassLocker</h1>
+            <section class="vh-50">
+                <div class="container py-5 h-40">
+                    <div class="row d-flex justify-content-center align-items-center h-30">
+                        <div class="col-12 col-md-8 col-lg-7 col-xl-5">
+                            <div class="card shadow-2-strong" style="border-radius: 1rem;">
+                                <div class="card-body p-5 text-center">
+                                    <h2>Login</h2>
+                                    {{ form|crispy }}
+                                    <input type="hidden" name="next" value="{{ next }}">
+                                    <input type="submit" name="submit" value="Submit" class="btn btn-primary" id="submit-id-submit">
+                                    {% csrf_token %}
+                                     </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+    </fieldset>
 </form>
 </body>
 </html>
