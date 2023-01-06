@@ -77,7 +77,45 @@ class MainCreateForm(MainBaseForm):
 
 
 class MainEditForm(MainBaseForm):
-    pass
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.form_method = 'post'
+        self.helper.form_id = 'changeLockerForm'
+        self.helper.label_class = 'col-lg-3'
+        self.helper.field_class = 'col-lg-8'
+        self.helper.layout = Layout(
+            Div(
+                Div(
+
+                    Div(
+
+                        Div(
+
+                            Div(
+                                Div(
+
+                                    Fieldset(
+                                        '', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
+                                    ),
+                                    css_class='card-body p-5 text-center'
+                                ),
+                                css_class='card shadow-2-strong'
+                            ),
+                            css_class='col-12 col-md-8 col-lg-7 col-xl-5'
+                        ),
+                        css_class='row d-flex justify-content-center align-items-center h-100'
+                    ),
+                    css_class='container py-5 h-100'
+                ),
+                css_class='vh-70'
+            ),
+            Div(
+                Submit('submit', 'Log Me In', css_class='btn btn-custom btn-lg btn-block'),
+                css_class='card shadow-2-strong',
+            )
+        )
 
 
 class MainDeleteForm(MainBaseForm, DisabledFormMixin):

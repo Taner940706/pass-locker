@@ -5,6 +5,6 @@ from PassLocker.groups.views import CreateGroupView, EditGroupView, DeleteGroupV
 urlpatterns = (
     path('', ListGroupView.as_view(), name='details group'),
     path('create/', CreateGroupView.as_view(), name='create group'),
-    path('edit/<int:pk>/', EditGroupView.as_view(), name='edit group'),
-    path('delete/<int:pk>/', DeleteGroupView.as_view(), name='delete group'),
+    path('<int:pk>/edit/', EditGroupView.as_view(), name='edit group'),
+    path('<int:pk>/delete/', DeleteGroupView.as_view(), name='delete group'),
 )

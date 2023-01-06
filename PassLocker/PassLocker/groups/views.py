@@ -18,7 +18,7 @@ class ListGroupView(views.ListView):
 class CreateGroupView(views.CreateView):
     template_name = 'groups/create-group-page.html'
     form_class = GroupCreateForm
-    success_url = reverse_lazy('dashboard')
+    success_url = reverse_lazy('login user')
 
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
@@ -28,9 +28,11 @@ class CreateGroupView(views.CreateView):
 
 class EditGroupView(views.UpdateView):
     template_name = 'groups/edit-group-page.html'
+    model = GroupModel
     form_class = GroupEditForm
-    fields = '__all__'
-    success_url = reverse_lazy('dashboard')
+    def get_success_url(self):
+        pk = self.kwargs['pk']
+        return reverse_lazy('edit group', kwargs={'pk': pk})
 
     def form_valid(self, form):
         return super().form_valid(form)

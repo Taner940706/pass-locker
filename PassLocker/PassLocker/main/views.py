@@ -28,8 +28,12 @@ class CreateLockerView(views.CreateView):
 
 class EditLockerView(views.UpdateView):
     template_name = 'main/edit-locker-page.html'
+    model = MainModel
     form_class = MainEditForm
-    success_url = reverse_lazy('dashboard')
+
+    def get_success_url(self):
+        pk = self.kwargs['pk']
+        return reverse_lazy('edit locker', kwargs={'pk': pk})
 
     def form_valid(self, form):
         return super().form_valid(form)
