@@ -1,6 +1,7 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit
+from crispy_forms.layout import Submit, Fieldset, Div, Layout, HTML
 from django import forms
+from django.urls import reverse
 
 from PassLocker.core.form_mixins import DisabledFormMixin
 from PassLocker.main.models import MainModel
@@ -47,14 +48,32 @@ class MainBaseForm(forms.ModelForm):
                 }
             ),
         }
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.helper = FormHelper(self)
-        self.helper.add_input(Submit('submit', 'Submit'))
+
 
 
 class MainCreateForm(MainBaseForm):
-    pass
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.helper = FormHelper(self)
+        self.helper.form_id = 'CreateNewLockerForm'
+        self.helper.form_action = reverse('create locker')
+        self.helper.form_method = 'post'
+        self.helper.form_class = 'form-horizontal'
+        self.helper.layout = Layout(
+            Div(
+                HTML('<h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Add Locker</h1>'),
+                css_class='modal-header'
+            ),
+            Div(
+                Fieldset('', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',),
+                css_class='modal-body'
+            ),
+            Div(
+                self.helper.add_input(Submit('submit', 'Submit')),
+                css_class='modal-footer'
+            )
+        )
+
 
 
 class MainEditForm(MainBaseForm):

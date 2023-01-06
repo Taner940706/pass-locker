@@ -18,7 +18,7 @@ class ListLockerView(views.ListView):
 class CreateLockerView(views.CreateView):
     template_name = 'main/create-locker-page.html'
     form_class = MainCreateForm
-    success_url = reverse_lazy('dashboard')
+    success_url = reverse_lazy('login user')
 
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
