@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -39,7 +40,12 @@ class EditLockerView(views.UpdateView):
         return super().form_valid(form)
 
 
-class DeleteLockerView(views.DeleteView):
+class DeleteLockerView(views.UpdateView):
     template_name = 'main/delete-locker-page.html'
+    model = MainModel
     form_class = MainDeleteForm
-    success_url = reverse_lazy('dashboard')
+
+    def get_success_url(self):
+        return reverse_lazy('register user')
+
+

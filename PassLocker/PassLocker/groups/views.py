@@ -1,3 +1,4 @@
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -38,8 +39,11 @@ class EditGroupView(views.UpdateView):
         return super().form_valid(form)
 
 
-class DeleteGroupView(views.DeleteView):
+class DeleteGroupView(views.UpdateView):
     template_name = 'groups/delete-group-page.html'
+    model = GroupModel
     form_class = GroupDeleteForm
-    success_url = reverse_lazy('dashboard')
+
+    def get_success_url(self):
+        return reverse_lazy('register user')
 
