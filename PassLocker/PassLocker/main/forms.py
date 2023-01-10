@@ -97,7 +97,11 @@ class MainEditForm(MainBaseForm):
                                 Div(
 
                                     Fieldset(
-                                        '', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
+                                        'Edit Locker', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
+                                    ),
+                                    Div(
+                                        Submit('submit', 'Submit', css_class='btn btn-custom btn-lg btn-block'),
+                                        css_class='card shadow-2-strong',
                                     ),
                                     css_class='card-body p-5 text-center'
                                 ),
@@ -111,10 +115,6 @@ class MainEditForm(MainBaseForm):
                 ),
                 css_class='vh-70'
             ),
-            Div(
-                Submit('submit', 'Log Me In', css_class='btn btn-custom btn-lg btn-block'),
-                css_class='card shadow-2-strong',
-            )
         )
 
 
@@ -145,22 +145,22 @@ class MainDeleteForm(MainBaseForm, DisabledFormMixin):
                                     Fieldset(
                                         'Delete Locker', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
                                     ),
+                                    Div(
+                                        Submit('submit', 'Log Me In', css_class='btn btn-custom btn-lg btn-block'),
+                                        css_class='card shadow-2-strong',
+                                    ),
                                     css_class='card-body p-5 text-center'
                                 ),
                                 css_class='card shadow-2-strong'
                             ),
-                            css_clasMainDeleteForms='col-12 col-md-8 col-lg-7 col-xl-5'
+                            css_class='col-12 col-md-8 col-lg-7 col-xl-5'
                         ),
                         css_class='row d-flex justify-content-center align-items-center h-100'
                     ),
                     css_class='container py-5 h-100'
                 ),
-                css_class='vh-70'
+                css_class='vh-50'
             ),
-            Div(
-                Submit('submit', 'Log Me In', css_class='btn btn-custom btn-lg btn-block'),
-                css_class='card shadow-2-strong',
-            )
         )
 
     def save(self, commit=True):

@@ -40,7 +40,7 @@ class GroupCreateForm(GroupBaseForm):
                 css_class='modal-header'
             ),
             Div(
-                Fieldset('', 'group_name', 'description', ),
+                Fieldset('Create Group', 'group_name', 'description', ),
                 css_class='modal-body'
             ),
             Div(
@@ -71,7 +71,11 @@ class GroupEditForm(GroupBaseForm):
                                 Div(
 
                                     Fieldset(
-                                        '', 'group_name', 'description',
+                                        'Edit Group', 'group_name', 'description',
+                                    ),
+                                    Div(
+                                        Submit('submit', 'Submit', css_class='btn btn-custom btn-lg btn-block'),
+                                        css_class='card shadow-2-strong',
                                     ),
                                     css_class='card-body p-5 text-center'
                                 ),
@@ -85,10 +89,6 @@ class GroupEditForm(GroupBaseForm):
                 ),
                 css_class='vh-70'
             ),
-            Div(
-                Submit('submit', 'Log Me In', css_class='btn btn-custom btn-lg btn-block'),
-                css_class='card shadow-2-strong',
-            )
         )
 
 
@@ -116,7 +116,11 @@ class GroupDeleteForm(GroupBaseForm, DisabledFormMixin):
                                 Div(
 
                                     Fieldset(
-                                        'Delete Locker', 'group_name', 'description',
+                                        'Delete Group', 'group_name', 'description',
+                                    ),
+                                    Div(
+                                        Submit('submit', 'Submit', css_class='btn btn-custom btn-lg btn-block'),
+                                        css_class='card shadow-2-strong',
                                     ),
                                     css_class='card-body p-5 text-center'
                                 ),
@@ -130,10 +134,6 @@ class GroupDeleteForm(GroupBaseForm, DisabledFormMixin):
                 ),
                 css_class='vh-70'
             ),
-            Div(
-                Submit('submit', 'Log Me In', css_class='btn btn-custom btn-lg btn-block'),
-                css_class='card shadow-2-strong',
-            )
         )
 
     def save(self, commit=True):

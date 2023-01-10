@@ -63,6 +63,8 @@ class UserCreateForm(auth_forms.UserCreationForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+        for field in ('username', 'email', 'password1', 'password2'):
+            self.fields[field].help_text = None
         self.helper = FormHelper()
         self.helper.form_class = 'form-horizontal'
         self.helper.form_method = 'post'
@@ -79,11 +81,18 @@ class UserCreateForm(auth_forms.UserCreationForm):
                         Div(
 
                             Div(
+                                Div(
 
                                 Fieldset(
 
                                     'Registration', 'username', 'email', 'password1', 'password2',
 
+                                ),
+                                    Div(
+                                        Submit('submit', 'Register', css_class='btn btn-custom btn-lg btn-block'),
+                                        css_class='card shadow-2-strong',
+                                    ),
+                                    css_class='card-body p-5 text-center'
                                 ),
                                 css_class='card shadow-2-strong'
                             ),
@@ -95,8 +104,5 @@ class UserCreateForm(auth_forms.UserCreationForm):
                 ),
                 css_class='vh-50'
             ),
-            Div(
-                Submit('submit', 'Log Me In', css_class='btn btn-custom btn-lg btn-block'),
-                css_class='card shadow-2-strong',
-            )
+
         )
