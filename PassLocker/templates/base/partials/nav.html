@@ -1,10 +1,88 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% block nav_content %}
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <div class="dropdown pb-4">
+                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                       id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="d-none d-sm-inline mx-4" id="userProfile"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                        <li><a class="dropdown-item" href="">Edit profile</a>
+                        </li>
+                        <li><a class="dropdown-item" href="">Delete</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="">Logout</a></li>
+                    </ul>
+                </div>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li>
+                        <a href="" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-link px-0 align-middle">
+                            <i class="bi bi-list-ol"></i> <span class="ms-1 d-none d-sm-inline">Meter points</span> </a>
 
-</body>
-</html>
+                    </li>
+                    <li>
+                        <a href="" class="nav-link px-0 align-middle">
+                            <i class="bi bi-list-task"></i> <span class="ms-1 d-none d-sm-inline">Tasks</span></a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-link px-0 align-middle ">
+                            <i class="bi bi-device-ssd"></i> <span class="ms-1 d-none d-sm-inline">Meter devices</span></a>
+
+                    </li>
+                    <li>
+                        <a href="" class="nav-link px-0 align-middle">
+                            <i class="bi bi-credit-card-2-front"></i> <span class="ms-1 d-none d-sm-inline">SIM</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="" class="nav-link px-0 align-middle">
+                            <i class="bi bi-webcam-fill"></i> <span class="ms-1 d-none d-sm-inline">Modems</span> </a>
+                    </li>
+                    {% if request.user.is_superuser %}
+                        <li>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <span
+                                    class="ms-1 d-none d-sm-inline">Analyses</span> <i class="bi bi-toggle-on"></i> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                                <li class="w-100">
+                                    <a href="" class="nav-link px-0"> <i
+                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count tasks by operation</span></a>
+                                </li>
+                                <li>
+                                    <a href="" class="nav-link px-0"><i
+                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count tasks by result</span></a>
+                                </li>
+                                <li>
+                                    <a href="" class="nav-link px-0"><i
+                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count meter devices by type </span></a>
+                                </li>
+                                <li>
+                                    <a href="" class="nav-link px-0"><i
+                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count tasks by username</span></a>
+                                </li>
+                                <li>
+                                    <a href="" class="nav-link px-0"><i
+                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count meter points in time</span></a>
+                                </li>
+                                <li>
+                                    <a href="" class="nav-link px-0"><i
+                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count meter points by regional center</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                    {% endif %}
+                </ul>
+                <hr>
+
+            </div>
+        </div>
+{% endblock %}
