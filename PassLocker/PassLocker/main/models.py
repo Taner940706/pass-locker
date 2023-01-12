@@ -64,3 +64,4 @@ class MainModel(models.Model):
         GroupModel,
         on_delete=models.CASCADE,
     )
+

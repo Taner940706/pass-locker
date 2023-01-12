@@ -3,6 +3,8 @@ from django.views import generic as views
 from django.contrib.auth import views as auth_views, get_user_model, login
 
 from PassLocker.accounts.forms import UserCreateForm, UserEditForm
+from PassLocker.core.get_group import get_group
+from PassLocker.groups.models import GroupModel
 
 UserModel = get_user_model()
 
@@ -28,6 +30,7 @@ class UserDetailsView(views.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context['groups'] = get_group
         return context
 
 
@@ -40,15 +43,25 @@ class UserEditView(views.UpdateView):
         pk = self.kwargs['pk']
         return reverse_lazy('edit user', kwargs={'pk': pk})
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['groups'] = get_group
+        return context
+
 
 class UserDeleteView(views.DeleteView):
     template_name = 'accounts/user-delete-page.html'
     model = UserModel
     success_url = reverse_lazy('register user')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['groups'] = get_group
+        return context
+
 
 class SignOutView(auth_views.LogoutView):
-    next_page = reverse_lazy('login')
+    next_page = reverse_lazy('login user')
 
 
 

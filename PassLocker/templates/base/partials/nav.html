@@ -6,21 +6,21 @@
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <span class="d-none d-sm-inline mx-4" id="userProfile"></span>
+                        <span class="d-none d-sm-inline mx-4" id="userProfile">{{ request.user.username }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="">Edit profile</a>
+                        <li><a class="dropdown-item" href="{% url 'edit user' pk=request.user.pk %}">Edit profile</a>
                         </li>
-                        <li><a class="dropdown-item" href="">Delete</a></li>
+                        <li><a class="dropdown-item" href="{% url 'delete user' pk=request.user.pk %}">Delete</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
-                        <li><a class="dropdown-item" href="">Logout</a></li>
+                        <li><a class="dropdown-item" href="{% url 'logout user' %}">Logout</a></li>
                     </ul>
                 </div>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li>
-                        <a href="" class="nav-link align-middle px-0">
+                        <a href="{% url 'details user' pk=request.user.pk %}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                         </a>
                     </li>
@@ -47,39 +47,21 @@
                         <a href="" class="nav-link px-0 align-middle">
                             <i class="bi bi-webcam-fill"></i> <span class="ms-1 d-none d-sm-inline">Modems</span> </a>
                     </li>
-                    {% if request.user.is_superuser %}
+{#                    {% if request.user.is_superuser %}#}
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                 <i class="fs-4 bi-speedometer2"></i> <span
-                                    class="ms-1 d-none d-sm-inline">Analyses</span> <i class="bi bi-toggle-on"></i> </a>
+                                    class="ms-1 d-none d-sm-inline">Groups</span> <i class="bi bi-toggle-on"></i> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="" class="nav-link px-0"> <i
-                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count tasks by operation</span></a>
-                                </li>
+                               {% for group in groups %}
                                 <li>
                                     <a href="" class="nav-link px-0"><i
-                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count tasks by result</span></a>
+                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">{{ group.group_name }}</span></a>
                                 </li>
-                                <li>
-                                    <a href="" class="nav-link px-0"><i
-                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count meter devices by type </span></a>
-                                </li>
-                                <li>
-                                    <a href="" class="nav-link px-0"><i
-                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count tasks by username</span></a>
-                                </li>
-                                <li>
-                                    <a href="" class="nav-link px-0"><i
-                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count meter points in time</span></a>
-                                </li>
-                                <li>
-                                    <a href="" class="nav-link px-0"><i
-                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Count meter points by regional center</span></a>
-                                </li>
+                                {% endfor %}
                             </ul>
                         </li>
-                    {% endif %}
+{#                    {% endif %}#}
                 </ul>
                 <hr>
 

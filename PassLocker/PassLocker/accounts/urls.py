@@ -1,6 +1,7 @@
 from django.urls import path, include
 
-from PassLocker.accounts.views import SignInView, SignUpView, SignOutView, UserDetailsView, UserEditView, UserDeleteView
+from PassLocker.accounts.views import SignInView, SignUpView, SignOutView, UserDetailsView, UserEditView, \
+    UserDeleteView
 
 urlpatterns = (
     path('', SignInView.as_view(), name='login user'),

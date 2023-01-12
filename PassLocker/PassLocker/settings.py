@@ -113,8 +113,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# superuser: ananisikem940706
-# pass: sanane940706
+# superuser: taner940706
+# pass: burgerking
 
 
 # Internationalization

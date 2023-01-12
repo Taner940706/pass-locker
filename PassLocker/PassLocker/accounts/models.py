@@ -6,6 +6,7 @@ from django.contrib.auth import models as auth_model
 
 from PassLocker.core.model_mixins import ChoicesEnumMixin
 from PassLocker.core.validators import validate_only_letters
+from PassLocker.groups.models import GroupModel
 
 
 # department choice
@@ -56,3 +57,4 @@ class AppUser(auth_model.AbstractUser):
         blank=False,
     )
     picture = models.ImageField(upload_to='accounts_photos/')
+
