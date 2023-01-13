@@ -5,20 +5,23 @@ from django.views import generic as views
 from PassLocker.core.get_group import get_group
 from PassLocker.groups.forms import GroupCreateForm, GroupEditForm, GroupDeleteForm
 from PassLocker.groups.models import GroupModel
+from PassLocker.main.models import MainModel
 
 
 # Create your views here.
 
 
 class ListGroupView(views.ListView):
-    context_object_name = 'group_list'
+    # context_object_name = 'group_list'
     model = GroupModel
     queryset = GroupModel.objects.all()
-    template_name = 'groups/details-group-page.html'
+    template_name = 'groups/list-group-page.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['groups'] = get_group
+        context['this_group'] = GroupModel.objects.get(pk=self.kwargs.get('pk'))
+        context['lockers'] = MainModel.objects.get(group_id=self.kwargs.get('pk'))
         return context
 
 

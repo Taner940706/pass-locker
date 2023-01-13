@@ -10,13 +10,6 @@ from PassLocker.main.models import MainModel
 # Create your views here.
 
 
-class ListLockerView(views.ListView):
-    context_object_name = 'locker_list'
-    model = MainModel
-    queryset = MainModel.objects.all()
-    template_name = 'main/list-locker-page.html'
-
-
 class CreateLockerView(views.CreateView):
     template_name = 'main/create-locker-page.html'
     form_class = MainCreateForm
@@ -28,8 +21,6 @@ class CreateLockerView(views.CreateView):
         return context
 
     def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
         return super().form_valid(form)
 
 

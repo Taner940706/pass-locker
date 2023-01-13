@@ -24,29 +24,19 @@
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
                         </a>
                     </li>
-                    <li>
-                        <a href="" class="nav-link px-0 align-middle">
-                            <i class="bi bi-list-ol"></i> <span class="ms-1 d-none d-sm-inline">Meter points</span> </a>
-
-                    </li>
-                    <li>
-                        <a href="" class="nav-link px-0 align-middle">
-                            <i class="bi bi-list-task"></i> <span class="ms-1 d-none d-sm-inline">Tasks</span></a>
-                    </li>
-                    <li>
-                        <a href="" class="nav-link px-0 align-middle ">
-                            <i class="bi bi-device-ssd"></i> <span class="ms-1 d-none d-sm-inline">Meter devices</span></a>
-
-                    </li>
-                    <li>
-                        <a href="" class="nav-link px-0 align-middle">
-                            <i class="bi bi-credit-card-2-front"></i> <span class="ms-1 d-none d-sm-inline">SIM</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="nav-link px-0 align-middle">
-                            <i class="bi bi-webcam-fill"></i> <span class="ms-1 d-none d-sm-inline">Modems</span> </a>
-                    </li>
+                         {% if request.user.is_superuser %}
+                        <li>
+                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                <i class="fs-4 bi-speedometer2"></i> <span
+                                    class="ms-1 d-none d-sm-inline">Group Operations</span> <i class="bi bi-toggle-on"></i> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                <li>
+                                    <a href="{% url 'create group' %}" class="nav-link px-0"><i
+                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Add Group</span></a>
+                                </li>
+                            </ul>
+                        </li>
+                   {% endif %}
 {#                    {% if request.user.is_superuser %}#}
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
@@ -55,7 +45,7 @@
                             <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                {% for group in groups %}
                                 <li>
-                                    <a href="" class="nav-link px-0"><i
+                                    <a href="{% url 'list group' pk=group.pk %}" class="nav-link px-0"><i
                                             class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">{{ group.group_name }}</span></a>
                                 </li>
                                 {% endfor %}
