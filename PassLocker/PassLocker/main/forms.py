@@ -1,5 +1,5 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Fieldset, Div, Layout, HTML, Field
+from crispy_forms.layout import Submit, Fieldset, Div, Layout, HTML
 from django import forms
 from django.urls import reverse
 
@@ -61,17 +61,35 @@ class MainCreateForm(MainBaseForm):
         self.helper.form_class = 'form-horizontal'
         self.helper.layout = Layout(
             Div(
-                HTML('<h1 class="modal-title fs-5" id="exampleModalLabel"><i class="bi bi-plus-lg"></i> Add Locker</h1>'),
-                css_class='modal-header'
+                Div(
+
+                    Div(
+
+                        Div(
+
+                            Div(
+                                Div(
+
+                                    Fieldset(
+                                        'Add Locker', 'software_name', 'url', 'username', 'password', 'comment',
+                                        'user', 'group',
+                                    ),
+                                    Div(
+                                        Submit('submit', 'Submit', css_class='btn btn-custom btn-lg btn-block'),
+                                        css_class='card shadow-2-strong',
+                                    ),
+                                    css_class='card-body p-5 text-center'
+                                ),
+                                css_class='card shadow-2-strong'
+                            ),
+                            css_class='col-12 col-md-8 col-lg-7 col-xl-5'
+                        ),
+                        css_class='row d-flex justify-content-center align-items-center h-100'
+                    ),
+                    css_class='container py-5 h-100'
+                ),
+                css_class='vh-70'
             ),
-            Div(
-                Fieldset('', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',),
-                css_class='modal-body'
-            ),
-            Div(
-                self.helper.add_input(Submit('submit', 'Submit')),
-                css_class='modal-footer'
-            )
         )
 
 

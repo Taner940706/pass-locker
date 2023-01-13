@@ -21,7 +21,7 @@ class ListGroupView(views.ListView):
         context = super().get_context_data(**kwargs)
         context['groups'] = get_group
         context['this_group'] = GroupModel.objects.get(pk=self.kwargs.get('pk'))
-        context['lockers'] = MainModel.objects.get(group_id=self.kwargs.get('pk'))
+        context['lockers'] = MainModel.objects.filter(group_id=self.kwargs.get('pk'))
         return context
 
 
