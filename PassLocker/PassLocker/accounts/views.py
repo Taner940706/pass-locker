@@ -1,10 +1,13 @@
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import Permission
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, get_user_model, login
 
 from PassLocker.accounts.forms import UserCreateForm, UserEditForm
 from PassLocker.core.get_group import get_group
-from PassLocker.groups.models import GroupModel
 
 UserModel = get_user_model()
 
@@ -24,17 +27,18 @@ class SignUpView(views.CreateView):
         return result
 
 
-class UserDetailsView(views.DetailView):
+class UserDetailsView(LoginRequiredMixin, views.DetailView):
     template_name = 'accounts/user-details-page.html'
     model = UserModel
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['groups'] = get_group
+        context['perm'] = Permission.objects.all()
         return context
 
 
-class UserEditView(views.UpdateView):
+class UserEditView(LoginRequiredMixin, views.UpdateView):
     template_name = 'accounts/user-edit-page.html'
     model = UserModel
     form_class = UserEditForm
@@ -49,7 +53,7 @@ class UserEditView(views.UpdateView):
         return context
 
 
-class UserDeleteView(views.DeleteView):
+class UserDeleteView(LoginRequiredMixin, views.DeleteView):
     template_name = 'accounts/user-delete-page.html'
     model = UserModel
     success_url = reverse_lazy('register user')

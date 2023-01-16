@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -10,7 +10,7 @@ from PassLocker.main.models import MainModel
 # Create your views here.
 
 
-class CreateLockerView(views.CreateView):
+class CreateLockerView(LoginRequiredMixin, views.CreateView):
     template_name = 'main/create-locker-page.html'
     form_class = MainCreateForm
     success_url = reverse_lazy('login user')
@@ -24,7 +24,7 @@ class CreateLockerView(views.CreateView):
         return super().form_valid(form)
 
 
-class EditLockerView(views.UpdateView):
+class EditLockerView(LoginRequiredMixin, views.UpdateView):
     template_name = 'main/edit-locker-page.html'
     model = MainModel
     form_class = MainEditForm
@@ -42,7 +42,7 @@ class EditLockerView(views.UpdateView):
         return context
 
 
-class DeleteLockerView(views.UpdateView):
+class DeleteLockerView(LoginRequiredMixin, views.UpdateView):
     template_name = 'main/delete-locker-page.html'
     model = MainModel
     form_class = MainDeleteForm

@@ -1,4 +1,4 @@
-from django.shortcuts import get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
 
@@ -11,7 +11,7 @@ from PassLocker.main.models import MainModel
 # Create your views here.
 
 
-class ListGroupView(views.ListView):
+class ListGroupView(LoginRequiredMixin, views.ListView):
     # context_object_name = 'group_list'
     model = GroupModel
     queryset = GroupModel.objects.all()
@@ -25,10 +25,11 @@ class ListGroupView(views.ListView):
         return context
 
 
-class CreateGroupView(views.CreateView):
+class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateView):
     template_name = 'groups/create-group-page.html'
     form_class = GroupCreateForm
     success_url = reverse_lazy('login user')
+    permission_required = 'groups.create_group'
 
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
@@ -41,10 +42,11 @@ class CreateGroupView(views.CreateView):
         return context
 
 
-class EditGroupView(views.UpdateView):
+class EditGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
     template_name = 'groups/edit-group-page.html'
     model = GroupModel
     form_class = GroupEditForm
+    permission_required = 'groups.edit_group'
     def get_success_url(self):
         pk = self.kwargs['pk']
         return reverse_lazy('edit group', kwargs={'pk': pk})
@@ -58,10 +60,11 @@ class EditGroupView(views.UpdateView):
         return context
 
 
-class DeleteGroupView(views.UpdateView):
+class DeleteGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
     template_name = 'groups/delete-group-page.html'
     model = GroupModel
     form_class = GroupDeleteForm
+    permission_required = 'groups.delete_group'
 
     def get_success_url(self):
         return reverse_lazy('register user')

@@ -1,6 +1,7 @@
 {% extends 'base/base_auth.html' %}
 {% load crispy_forms_tags %}
 {% block page_content %}
-    <p>its work {{ request.user.username }}</p>
+    <p>its work {{ self.request.user.username }}</p>
+    <p>{{ perm }}</p>
 {% endblock %}
 
