@@ -39,6 +39,14 @@
                             <td>Created: {{ locker.created_date }}</td>
                             <td>Updated: {{ locker.updated_date }}</td>
                             <td>
+                                {% if has_perm and request.user.pk == locker.user_id or request.user.is_superuser%}
+                                    <button type="button" class="btn btn-primary" title="Edit"><a
+                                            href= {% url 'edit locker' pk=locker.id %}><i class="bi bi-pencil"></i></a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" title="Delete"><a
+                                            href= {% url 'delete locker' pk=locker.id %}><i class="bi bi-trash"></i></a>
+                                    </button>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
@@ -46,9 +54,9 @@
             {% endif %}
             </div>
         </div>
-{#        {% if is_perm %}#}
+        {% if has_perm %}
             <a href= {% url 'create locker' %}><i class="bi bi-pencil"></i>Add Locker</a>
 
-{#        {% endif %}#}
+        {% endif %}
     </div>
 {% endblock %}

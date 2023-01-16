@@ -22,6 +22,7 @@ class ListGroupView(LoginRequiredMixin, views.ListView):
         context['groups'] = get_group
         context['this_group'] = GroupModel.objects.get(pk=self.kwargs.get('pk'))
         context['lockers'] = MainModel.objects.filter(group_id=self.kwargs.get('pk'))
+        context['has_perm'] = self.request.user.has_perm('main.change_mainmodel')
         return context
 
 
@@ -47,6 +48,7 @@ class EditGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.UpdateVie
     model = GroupModel
     form_class = GroupEditForm
     permission_required = 'groups.edit_group'
+
     def get_success_url(self):
         pk = self.kwargs['pk']
         return reverse_lazy('edit group', kwargs={'pk': pk})

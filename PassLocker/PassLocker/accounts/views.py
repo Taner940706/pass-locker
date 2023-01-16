@@ -34,7 +34,7 @@ class UserDetailsView(LoginRequiredMixin, views.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['groups'] = get_group
-        context['perm'] = Permission.objects.all()
+        context['perm'] = self.request.user.get_all_permissions()
         return context
 
 
