@@ -147,7 +147,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'accounts.AppUser'
-LOGIN_REDIRECT_URL = reverse_lazy('register user')
+LOGIN_REDIRECT_URL = reverse_lazy('create locker')
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"

@@ -29,7 +29,7 @@ class ListGroupView(LoginRequiredMixin, views.ListView):
 class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateView):
     template_name = 'groups/create-group-page.html'
     form_class = GroupCreateForm
-    success_url = reverse_lazy('login user')
+    success_url = reverse_lazy('create locker')
     permission_required = 'groups.create_group'
 
     def form_valid(self, form):
@@ -51,7 +51,7 @@ class EditGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.UpdateVie
 
     def get_success_url(self):
         pk = self.kwargs['pk']
-        return reverse_lazy('edit group', kwargs={'pk': pk})
+        return reverse_lazy('details user', kwargs={'pk': pk})
 
     def form_valid(self, form):
         return super().form_valid(form)
@@ -69,7 +69,7 @@ class DeleteGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.UpdateV
     permission_required = 'groups.delete_group'
 
     def get_success_url(self):
-        return reverse_lazy('register user')
+        return reverse_lazy('create locker')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

@@ -1,8 +1,5 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.models import Permission
 from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, get_user_model, login
 
@@ -45,7 +42,7 @@ class UserEditView(LoginRequiredMixin, views.UpdateView):
 
     def get_success_url(self):
         pk = self.kwargs['pk']
-        return reverse_lazy('edit user', kwargs={'pk': pk})
+        return reverse_lazy('details user', kwargs={'pk': pk})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -56,7 +53,7 @@ class UserEditView(LoginRequiredMixin, views.UpdateView):
 class UserDeleteView(LoginRequiredMixin, views.DeleteView):
     template_name = 'accounts/user-delete-page.html'
     model = UserModel
-    success_url = reverse_lazy('register user')
+    success_url = reverse_lazy('login user')
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

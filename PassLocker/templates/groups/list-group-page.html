@@ -5,6 +5,14 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="page-heading"><h1><i class="bi bi-list"></i>{{ this_group.group_name }}</h1></div>
+                {% if request.user.is_superuser%}
+                                    <button type="button" class="btn btn-primary" title="Edit"><a
+                                            href= {% url 'edit group' pk=this_group.pk %}><i class="bi bi-pencil"></i></a>
+                                    </button>
+                                    <button type="button" class="btn btn-danger" title="Delete"><a
+                                            href= {% url 'delete group' pk=this_group.pk %}><i class="bi bi-trash"></i></a>
+                                    </button>
+                                {% endif %}
             </div>
             <div class="panel-body">
                 <div class="remove-messages"></div>
