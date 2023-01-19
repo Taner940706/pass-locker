@@ -29,3 +29,6 @@ class GroupModel(models.Model):
         null=False,
         blank=True,
     )
+
+    def __str__(self):
+        return self.group_name
