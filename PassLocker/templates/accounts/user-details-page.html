@@ -1,7 +1,68 @@
 {% extends 'base/base_auth.html' %}
-{% load crispy_forms_tags %}
 {% block page_content %}
-    <p>its work {{ self.request.user.username }}</p>
-    <p>{{ perm }}</p>
-{% endblock %}
+<div class="row">
 
+	<div class="col-md-4">
+		<div class="card">
+		  <div class="cardHeader">
+		    <h1>{{ request.user.username }}</h1>
+		  </div>
+		  <div class="cardContainer">
+		    <p>{{ request.user.first_name }} {{ request.user.last_name }}</p>
+		  </div>
+		</div>
+		<br/>
+
+		<div class="card">
+		  <div class="cardHeader" style="background-color:#245580;">
+		    <h1>{{ all_groups }}</h1>
+		  </div>
+
+		  <div class="cardContainer">
+		    <p> <i class="glyphicon glyphicon-tasks"></i> Count of all groups</p>
+		  </div>
+		</div>
+
+<br/>
+
+<div class="card">
+		  <div class="cardHeader" style="background-color:#245544;">
+		    <h1>{{ all_user_lockers }}</h1>
+		  </div>
+
+		  <div class="cardContainer">
+		    <p> <i class="glyphicon glyphicon-user"></i> Count of all users lockers</p>
+		  </div>
+		</div>
+
+<br/>
+        		<div class="card">
+		  <div class="cardHeader" style="background-color:#245580;">
+		    <h1>{{ all_lockers }}</h1>
+		  </div>
+
+		  <div class="cardContainer">
+		    <p> <i class="glyphicon glyphicon-tasks"></i> Count of all lockers</p>
+		  </div>
+		</div>
+
+<br/>
+
+{#<div class="card">#}
+{#		  <div class="cardHeader" style="background-color:#00FFFF;">#}
+{#		    <h1>{{ count_all_tasks_today }}</h1>#}
+{#		  </div>#}
+{##}
+{#		  <div class="cardContainer">#}
+{#		    <p> <i class="glyphicon glyphicon-list-alt"></i>Count of all tasks for today</p>#}
+{#		  </div>#}
+{#		</div>#}
+{##}
+{##}
+{##}
+{#	</div>#}
+
+
+	</div>
+</div>
+{% endblock %}

@@ -37,18 +37,7 @@ class MainBaseForm(forms.ModelForm):
                     'placeholders': 'URL:'
                 }
             ),
-            'user': forms.TextInput(
-                attrs={
-                    'placeholders': 'User:'
-                }
-            ),
-            'group': forms.TextInput(
-                attrs={
-                    'placeholders': 'Group:'
-                }
-            ),
         }
-
 
 
 class MainCreateForm(MainBaseForm):
