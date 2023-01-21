@@ -4,7 +4,7 @@ from django.views import generic as views
 from django.contrib.auth import views as auth_views, get_user_model, login
 
 from PassLocker.accounts.forms import UserCreateForm, UserEditForm
-from PassLocker.core.analyses import count_locker_by_username
+from PassLocker.core.analyses import count_locker_by_username, count_locker_by_time, count_group_by_time
 from PassLocker.core.get_group import get_group
 from PassLocker.groups.models import GroupModel
 from PassLocker.main.models import MainModel
@@ -39,6 +39,8 @@ class UserDetailsView(LoginRequiredMixin, views.DetailView):
         context['all_lockers'] = MainModel.objects.all().count()
         context['all_user_lockers'] = MainModel.objects.filter(user=self.request.user.pk).count()
         context['count_locker_by_username'] = count_locker_by_username
+        context['count_locker_by_time'] = count_locker_by_time
+        context['count_group_by_time'] = count_group_by_time
         return context
 
 

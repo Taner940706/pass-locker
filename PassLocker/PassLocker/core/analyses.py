@@ -1,3 +1,4 @@
+from PassLocker.groups.models import GroupModel
 from PassLocker.main.models import MainModel
 
 
@@ -35,6 +36,26 @@ def count_locker_by_time():
     context = {
         'label_in_time': label_in_time,
         'data_in_time': data_in_time,
+    }
+
+    return context
+
+
+def count_group_by_time():
+    label_group_in_time = []
+    data_group_in_time = []
+
+    groups = GroupModel.objects.all().order_by('created_date')
+    for group in groups:
+        if group.created_date not in label_group_in_time:
+            label_group_in_time.append(group.created_date)
+
+    for lab in label_group_in_time:
+        data_group_in_time.append(GroupModel.objects.filter(created_date=lab).count())
+
+    context = {
+        'label_group_in_time': label_group_in_time,
+        'data_group_in_time': data_group_in_time,
     }
 
     return context
