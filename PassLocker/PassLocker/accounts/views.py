@@ -74,4 +74,8 @@ class SignOutView(auth_views.LogoutView):
     next_page = reverse_lazy('login user')
 
 
+class Handler404(views.TemplateView):
+    template_name = '404.html'
+
+
 
