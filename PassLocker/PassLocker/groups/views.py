@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
@@ -35,6 +36,7 @@ class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateV
     def form_valid(self, form):
         # This method is called when valid form data has been POSTed.
         # It should return an HttpResponse.
+        messages.success = "Group was created successfully!"
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -50,10 +52,10 @@ class EditGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.UpdateVie
     permission_required = 'groups.edit_group'
 
     def get_success_url(self):
-        pk = self.kwargs['pk']
-        return reverse_lazy('details user', kwargs={'pk': pk})
+        return reverse_lazy('create locker')
 
     def form_valid(self, form):
+        messages.success = "Group was edited successfully!"
         return super().form_valid(form)
 
     def get_context_data(self, **kwargs):
@@ -75,4 +77,8 @@ class DeleteGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.UpdateV
         context = super().get_context_data(**kwargs)
         context['groups'] = get_group
         return context
+
+    def form_valid(self, form):
+        messages.success = "Group was deleted successfully!"
+        return super().form_valid(form)
 

@@ -4,3 +4,7 @@ setTimeout(function (){
     $('#msg').remove();
     }
 }, 5000)
+
+$(document).ready(function(){
+  $('.toast').toast('show');
+});

@@ -1,4 +1,6 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, get_user_model, login
@@ -15,6 +17,10 @@ UserModel = get_user_model()
 class SignInView(auth_views.LoginView):
     template_name = 'accounts/login-page.html'
 
+    def form_invalid(self, form):
+        messages.error(self.request, "Username and/or password is incorrect!")
+        return super().form_invalid(form)
+
 
 class SignUpView(views.CreateView):
     template_name = 'accounts/register-page.html'
@@ -25,6 +31,13 @@ class SignUpView(views.CreateView):
         result = super().form_valid(form)
         login(self.request, self.object)
         return result
+
+    def form_invalid(self, form):
+        if form['password1'].value() != form['password2'].value():
+            messages.error(self.request, "Passwords doesn't match")
+        else:
+            messages.error(self.request, "Username exist!!")
+        return super().form_invalid(form)
 
 
 class UserDetailsView(LoginRequiredMixin, views.DetailView):
@@ -48,6 +61,7 @@ class UserEditView(LoginRequiredMixin, views.UpdateView):
     template_name = 'accounts/user-edit-page.html'
     model = UserModel
     form_class = UserEditForm
+    messages.success = "User was updated successfully"
 
     def get_success_url(self):
         pk = self.kwargs['pk']
@@ -59,9 +73,10 @@ class UserEditView(LoginRequiredMixin, views.UpdateView):
         return context
 
 
-class UserDeleteView(LoginRequiredMixin, views.DeleteView):
+class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, views.DeleteView):
     template_name = 'accounts/user-delete-page.html'
     model = UserModel
+    success_message = "User was deleted successfully"
     success_url = reverse_lazy('login user')
 
     def get_context_data(self, **kwargs):
@@ -72,6 +87,7 @@ class UserDeleteView(LoginRequiredMixin, views.DeleteView):
 
 class SignOutView(auth_views.LogoutView):
     next_page = reverse_lazy('login user')
+    messages.success = "User was logged out successfully"
 
 
 class Handler404(views.TemplateView):

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
@@ -21,6 +22,7 @@ class CreateLockerView(LoginRequiredMixin, views.CreateView):
         return context
 
     def form_valid(self, form):
+        messages.success = "Locker was created successfully!"
         return super().form_valid(form)
 
 
@@ -28,10 +30,10 @@ class EditLockerView(LoginRequiredMixin, views.UpdateView):
     template_name = 'main/edit-locker-page.html'
     model = MainModel
     form_class = MainEditForm
+    messages.success = "Locker was edited successfully!"
 
     def get_success_url(self):
-        pk = self.kwargs['pk']
-        return reverse_lazy('edit locker', kwargs={'pk': pk})
+        return reverse_lazy('create locker')
 
     def form_valid(self, form):
         return super().form_valid(form)
@@ -54,5 +56,9 @@ class DeleteLockerView(LoginRequiredMixin, views.UpdateView):
         context = super().get_context_data(**kwargs)
         context['groups'] = get_group
         return context
+
+    def form_valid(self, form):
+        messages.success = "Locker was deleted successfully!"
+        return super().form_valid(form)
 
 
