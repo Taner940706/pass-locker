@@ -14,7 +14,9 @@ from PassLocker.main.models import MainModel
 class CreateLockerView(LoginRequiredMixin, views.CreateView):
     template_name = 'main/create-locker-page.html'
     form_class = MainCreateForm
-    success_url = reverse_lazy('create locker')
+
+    def get_success_url(self):
+        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -33,7 +35,7 @@ class EditLockerView(LoginRequiredMixin, views.UpdateView):
     messages.success = "Locker was edited successfully!"
 
     def get_success_url(self):
-        return reverse_lazy('create locker')
+        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
 
     def form_valid(self, form):
         return super().form_valid(form)
@@ -50,7 +52,7 @@ class DeleteLockerView(LoginRequiredMixin, views.UpdateView):
     form_class = MainDeleteForm
 
     def get_success_url(self):
-        return reverse_lazy('create locker')
+        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

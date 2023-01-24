@@ -16,3 +16,4 @@ if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 handler404 = PassLocker.accounts.views.Handler404.as_view()
+handler500 = PassLocker.accounts.views.Handler500.as_view()

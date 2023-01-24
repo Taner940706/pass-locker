@@ -64,8 +64,7 @@ class UserEditView(LoginRequiredMixin, views.UpdateView):
     messages.success = "User was updated successfully"
 
     def get_success_url(self):
-        pk = self.kwargs['pk']
-        return reverse_lazy('details user', kwargs={'pk': pk})
+        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -77,7 +76,9 @@ class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, views.DeleteView):
     template_name = 'accounts/user-delete-page.html'
     model = UserModel
     success_message = "User was deleted successfully"
-    success_url = reverse_lazy('login user')
+
+    def get_success_url(self):
+        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -92,6 +93,10 @@ class SignOutView(auth_views.LogoutView):
 
 class Handler404(views.TemplateView):
     template_name = '404.html'
+
+
+class Handler500(views.TemplateView):
+    template_name = '500.html'
 
 
 
