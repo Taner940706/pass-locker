@@ -4,6 +4,7 @@ from django.urls import reverse_lazy
 from django.views import generic as views
 
 from PassLocker.core.get_group import get_group
+from PassLocker.core.view_mixin import GetContextAndURLViewMixin
 from PassLocker.groups.forms import GroupCreateForm, GroupEditForm, GroupDeleteForm
 from PassLocker.groups.models import GroupModel
 from PassLocker.main.models import MainModel
@@ -47,38 +48,22 @@ class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateV
         return context
 
 
-class EditGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
+class EditGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
     template_name = 'groups/edit-group-page.html'
     model = GroupModel
     form_class = GroupEditForm
     permission_required = 'groups.edit_group'
 
-    def get_success_url(self):
-        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
-
     def form_valid(self, form):
         messages.success = "Group was edited successfully!"
         return super().form_valid(form)
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['groups'] = get_group
-        return context
 
-
-class DeleteGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
+class DeleteGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
     template_name = 'groups/delete-group-page.html'
     model = GroupModel
     form_class = GroupDeleteForm
     permission_required = 'groups.delete_group'
-
-    def get_success_url(self):
-        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['groups'] = get_group
-        return context
 
     def form_valid(self, form):
         messages.success = "Group was deleted successfully!"

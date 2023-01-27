@@ -1,0 +1,44 @@
+<div>
+            <canvas id="myChart" style="width:50%;max-width:1000px"></canvas>
+
+    <script>
+        const ctx = document.getElementById('myChart');
+
+        new Chart(ctx, {
+            plugins: [{
+                beforeInit: function (chart) {
+                    chart.legend.afterFit = function () {
+                        this.height = this.height + 50;
+                    };
+                }
+            }],
+            type: 'line',
+            data: {
+                labels: [{% for i in count_locker_by_time.label_in_time %} '{{ i }}', {% endfor %}],
+                datasets: [{
+                    label: "Count of lockers by time",
+                    data: {{ count_locker_by_time.data_in_time }}, //y-axes data
+                    borderColor: 'black',
+                    fill: false,
+                    backgroundColor: [
+                        "#b91d47",
+                        "#00aba9",
+                        "#2b5797",
+                        "#e8c3b9",
+                        "#1e7145"
+                    ],
+                }]
+            },
+            options: {
+                responsive: true,
+                legend: {
+                    labels: {
+                        fontSize: 20,
+                    }
+                },
+            }
+        });
+
+
+    </script>
+        </div>

@@ -22,24 +22,32 @@
 {#    {% endfor %}#}
 {#{% endif %}#}
 
+{#{% if messages %}#}
+{#    {% for message in messages %}#}
+{#<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="msg">#}
+{#  <div class="toast-header">#}
+{#    <img src="..." class="rounded mr-2" alt="...">#}
+{#      {% if message.tags == 'danger' %}#}
+{#    <strong class="mr-auto text-{{ message.tags }}">Operation is failed</strong>#}
+{#      {% else %}#}
+{#      <strong class="mr-auto text-{{ message.tags }}">Successful operation!</strong>#}
+{#      {% endif %}#}
+{#    <small class="text-muted">{{ request.user.username }}</small>#}
+{#    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">#}
+{#      <span aria-hidden="true">&times;</span>#}
+{#    </button>#}
+{#  </div>#}
+{#  <div class="toast-body">#}
+{#    {{ message }}#}
+{#  </div>#}
+{#</div>#}
+{#    {% endfor %}#}
+{#{% endif %}#}
+
 {% if messages %}
     {% for message in messages %}
-<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" id="msg">
-  <div class="toast-header">
-    <img src="..." class="rounded mr-2" alt="...">
-      {% if message.tags == 'danger' %}
-    <strong class="mr-auto text-{{ message.tags }}">Operation is failed</strong>
-      {% else %}
-      <strong class="mr-auto text-{{ message.tags }}">Successful operation!</strong>
-      {% endif %}
-    <small class="text-muted">{{ request.user.username }}</small>
-    <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="toast-body">
-    {{ message }}
-  </div>
-</div>
+        <div class="alert alert-{{ message.tags }} m-2" id="msg" role="alert">
+            {{ message }}
+        </div>
     {% endfor %}
 {% endif %}

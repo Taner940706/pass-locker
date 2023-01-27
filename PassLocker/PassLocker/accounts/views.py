@@ -6,10 +6,8 @@ from django.views import generic as views
 from django.contrib.auth import views as auth_views, get_user_model, login
 
 from PassLocker.accounts.forms import UserCreateForm, UserEditForm
-from PassLocker.core.analyses import count_locker_by_username, count_locker_by_time, count_group_by_time
-from PassLocker.core.get_group import get_group
-from PassLocker.groups.models import GroupModel
-from PassLocker.main.models import MainModel
+from PassLocker.core.view_mixin import GetContextAndURLViewMixin
+
 
 UserModel = get_user_model()
 
@@ -40,50 +38,22 @@ class SignUpView(views.CreateView):
         return super().form_invalid(form)
 
 
-class UserDetailsView(LoginRequiredMixin, views.DetailView):
+class UserDetailsView(GetContextAndURLViewMixin, LoginRequiredMixin, views.DetailView):
     template_name = 'accounts/user-details-page.html'
     model = UserModel
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['groups'] = get_group
-        # context['perm'] = self.request.user.get_all_permissions()
-        context['all_groups'] = GroupModel.objects.all().count()
-        context['all_lockers'] = MainModel.objects.all().count()
-        context['all_user_lockers'] = MainModel.objects.filter(user=self.request.user.pk).count()
-        context['count_locker_by_username'] = count_locker_by_username
-        context['count_locker_by_time'] = count_locker_by_time
-        context['count_group_by_time'] = count_group_by_time
-        return context
 
-
-class UserEditView(LoginRequiredMixin, views.UpdateView):
+class UserEditView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessageMixin, views.UpdateView):
     template_name = 'accounts/user-edit-page.html'
     model = UserModel
     form_class = UserEditForm
-    messages.success = "User was updated successfully"
-
-    def get_success_url(self):
-        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['groups'] = get_group
-        return context
+    success_message = "User was updated successfully"
 
 
-class UserDeleteView(LoginRequiredMixin, SuccessMessageMixin, views.DeleteView):
+class UserDeleteView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessageMixin, views.DeleteView):
     template_name = 'accounts/user-delete-page.html'
     model = UserModel
     success_message = "User was deleted successfully"
-
-    def get_success_url(self):
-        return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['groups'] = get_group
-        return context
 
 
 class SignOutView(auth_views.LogoutView):
