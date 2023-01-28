@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.urls import reverse_lazy
 from django.views import generic as views
 from PassLocker.core.analyses import count_locker_by_username, count_locker_by_time, count_group_by_time
@@ -23,4 +24,7 @@ class GetContextAndURLViewMixin(views.DetailView):
         return context
 
     def get_success_url(self):
+        messages.success = "Group was edited successfully!"
         return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
+
+

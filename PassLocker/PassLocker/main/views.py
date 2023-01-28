@@ -29,6 +29,10 @@ class CreateLockerView(LoginRequiredMixin, views.CreateView):
         messages.success = "Locker was created successfully!"
         return super().form_valid(form)
 
+    def form_invalid(self, form):
+        messages.error(self.request, "Failed operation!")
+        return super().form_invalid(form)
+
 
 class EditLockerView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessageMixin, views.UpdateView):
     template_name = 'main/edit-locker-page.html'
@@ -37,6 +41,10 @@ class EditLockerView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessa
 
     def form_valid(self, form):
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, "Failed operation!")
+        return super().form_invalid(form)
 
 
 class DeleteLockerView(GetContextAndURLViewMixin, LoginRequiredMixin, views.UpdateView):
@@ -47,5 +55,9 @@ class DeleteLockerView(GetContextAndURLViewMixin, LoginRequiredMixin, views.Upda
     def form_valid(self, form):
         messages.success = "Locker was deleted successfully!"
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, "Failed operation!")
+        return super().form_invalid(form)
 
 

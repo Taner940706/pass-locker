@@ -47,6 +47,10 @@ class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateV
         context['groups'] = get_group
         return context
 
+    def form_invalid(self, form):
+        messages.error(self.request, "Failed operation!")
+        return super().form_invalid(form)
+
 
 class EditGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
     template_name = 'groups/edit-group-page.html'
@@ -55,8 +59,11 @@ class EditGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionReq
     permission_required = 'groups.edit_group'
 
     def form_valid(self, form):
-        messages.success = "Group was edited successfully!"
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, "Failed operation!")
+        return super().form_invalid(form)
 
 
 class DeleteGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
@@ -68,4 +75,8 @@ class DeleteGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionR
     def form_valid(self, form):
         messages.success = "Group was deleted successfully!"
         return super().form_valid(form)
+
+    def form_invalid(self, form):
+        messages.error(self.request, "Failed operation!")
+        return super().form_invalid(form)
 
