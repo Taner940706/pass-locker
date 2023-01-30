@@ -37,10 +37,10 @@ class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateV
         return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
 
     def form_valid(self, form):
-        # This method is called when valid form data has been POSTed.
-        # It should return an HttpResponse.
-        messages.success = "Group was created successfully!"
+        messages.warning(self.request, "Successful operation!")
         return super().form_valid(form)
+
+
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -59,11 +59,8 @@ class EditGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionReq
     permission_required = 'groups.edit_group'
 
     def form_valid(self, form):
+        messages.warning(self.request, "Successful operation!")
         return super().form_valid(form)
-
-    def form_invalid(self, form):
-        messages.error(self.request, "Failed operation!")
-        return super().form_invalid(form)
 
 
 class DeleteGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
@@ -73,7 +70,7 @@ class DeleteGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionR
     permission_required = 'groups.delete_group'
 
     def form_valid(self, form):
-        messages.success = "Group was deleted successfully!"
+        messages.warning(self.request, "Successful operation!")
         return super().form_valid(form)
 
     def form_invalid(self, form):

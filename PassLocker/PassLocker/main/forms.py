@@ -58,6 +58,8 @@ class MainCreateForm(MainBaseForm):
 
                             Div(
                                 Div(
+                                    HTML(
+                                        """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                     Fieldset(
                                         'Add Locker', 'software_name', 'url', 'username', 'password', 'comment',
@@ -102,6 +104,8 @@ class MainEditForm(MainBaseForm):
 
                             Div(
                                 Div(
+                                    HTML(
+                                        """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                     Fieldset(
                                         'Edit Locker', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
@@ -148,6 +152,8 @@ class MainDeleteForm(MainBaseForm, DisabledFormMixin):
 
                             Div(
                                 Div(
+                                    HTML(
+                                        """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                     Fieldset(
                                         'Delete Locker', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',

@@ -1,9 +1,8 @@
 from crispy_forms.helper import FormHelper
-from crispy_forms.layout import Submit, Layout, Fieldset, Div
+from crispy_forms.layout import Submit, Layout, Fieldset, Div, HTML
 from django import forms
 from django.contrib.auth import forms as auth_forms, get_user_model
 from django.urls import reverse
-
 from PassLocker.core.form_mixins import DisabledFormMixin
 
 UserModel = get_user_model()
@@ -34,6 +33,7 @@ class UserEditForm(auth_forms.UserChangeForm):
 
                                 Div(
                                     Div(
+                                        HTML("""<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                         Fieldset(
                                             'Edit', 'id', 'first_name', 'last_name', 'email', 'department', 'picture'
@@ -87,6 +87,8 @@ class UserCreateForm(auth_forms.UserCreationForm):
                             Div(
                                 Div(
 
+                                        HTML("""<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
+
                                     Fieldset(
 
                                         'Registration', 'username', 'email', 'password1', 'password2',
@@ -110,6 +112,7 @@ class UserCreateForm(auth_forms.UserCreationForm):
             ),
 
         )
+
 
 class UserDeleteForm(forms.ModelForm, DisabledFormMixin):
     disabled_fields = '__all__'
@@ -161,7 +164,8 @@ class UserDeleteForm(forms.ModelForm, DisabledFormMixin):
                                 Div(
 
                                     Div(
-
+                                        HTML(
+                                            """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
 
                                         Fieldset(

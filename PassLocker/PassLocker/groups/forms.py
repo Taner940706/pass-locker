@@ -40,6 +40,7 @@ class GroupCreateForm(GroupBaseForm):
                 css_class='modal-header'
             ),
             Div(
+                HTML("""<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
                 Fieldset('Create Group', 'group_name', 'description', ),
                 css_class='modal-body'
             ),
@@ -69,6 +70,8 @@ class GroupEditForm(GroupBaseForm):
 
                             Div(
                                 Div(
+                                    HTML(
+                                        """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                     Fieldset(
                                         'Edit Group', 'group_name', 'description',
@@ -114,6 +117,8 @@ class GroupDeleteForm(GroupBaseForm, DisabledFormMixin):
 
                             Div(
                                 Div(
+                                    HTML(
+                                        """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                     Fieldset(
                                         'Delete Group', 'group_name', 'description',

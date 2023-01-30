@@ -26,7 +26,7 @@ class CreateLockerView(LoginRequiredMixin, views.CreateView):
         return context
 
     def form_valid(self, form):
-        messages.success = "Locker was created successfully!"
+        messages.warning(self.request, "Successful operation!")
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -40,6 +40,7 @@ class EditLockerView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessa
     form_class = MainEditForm
 
     def form_valid(self, form):
+        messages.warning(self.request, "Successful operation!")
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -53,7 +54,7 @@ class DeleteLockerView(GetContextAndURLViewMixin, LoginRequiredMixin, views.Upda
     form_class = MainDeleteForm
 
     def form_valid(self, form):
-        messages.success = "Locker was deleted successfully!"
+        messages.warning(self.request, "Successful operation!")
         return super().form_valid(form)
 
     def form_invalid(self, form):

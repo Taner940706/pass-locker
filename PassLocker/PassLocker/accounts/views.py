@@ -53,6 +53,9 @@ class UserEditView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessage
         messages.error(self.request, "Failed operation!")
         return super().form_invalid(form)
 
+    def form_valid(self, form):
+        messages.warning(self.request, "Successful operation!")
+        return super().form_valid(form)
 
 
 # class UserDeleteView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessageMixin, views.DeleteView):

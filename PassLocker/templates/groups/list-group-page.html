@@ -63,7 +63,10 @@
             </div>
         </div>
         {% if has_perm %}
-            <a href= {% url 'create locker' %}><i class="bi bi-pencil"></i>Add Locker</a>
+{#            <a href= {% url 'create locker' %}><i class="bi bi-pencil"></i>Add Locker</a>#}
+            <button type="button" class="btn btn-success" title="Add">Add locker<a
+                                            href= {% url 'create locker' %}><i class="bi bi-pencil"></i></a>
+                                    </button>
 
         {% endif %}
     </div>
