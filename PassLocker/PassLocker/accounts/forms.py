@@ -24,6 +24,7 @@ class UserEditForm(auth_forms.UserChangeForm):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
+
                 Div(
                     Div(
 
@@ -33,7 +34,8 @@ class UserEditForm(auth_forms.UserChangeForm):
 
                                 Div(
                                     Div(
-                                        HTML("""<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
+                                        HTML(
+                                            """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                         Fieldset(
                                             'Edit', 'id', 'first_name', 'last_name', 'email', 'department', 'picture'
@@ -78,6 +80,9 @@ class UserCreateForm(auth_forms.UserCreationForm):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
+                HTML(
+                    """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
+                    <h1 id="login_h1">PassLocker</h1>"""),
                 Div(
 
                     Div(
@@ -86,8 +91,6 @@ class UserCreateForm(auth_forms.UserCreationForm):
 
                             Div(
                                 Div(
-
-                                        HTML("""<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                     Fieldset(
 
@@ -111,6 +114,7 @@ class UserCreateForm(auth_forms.UserCreationForm):
                 css_class='vh-50'
             ),
 
+
         )
 
 
@@ -118,17 +122,13 @@ class UserDeleteForm(forms.ModelForm, DisabledFormMixin):
     disabled_fields = '__all__'
 
     class Meta:
-
         model = UserModel
 
         fields = ('first_name', 'last_name', 'email', 'department', 'picture')
 
         field_classes = {'username': auth_forms.UsernameField, }
 
-
-
     def __init__(self, *args, **kwargs):
-
         super().__init__(*args, **kwargs)
         self._disable_fields()
         self.helper = FormHelper()
@@ -145,38 +145,32 @@ class UserDeleteForm(forms.ModelForm, DisabledFormMixin):
 
         self.helper.layout = Layout(
 
-				Div(
+            Div(
+                HTML(
+                    """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
+                    <h1 id="login_h1">PassLocker</h1>"""),
 
                 Div(
 
                     Div(
 
-
-
                         Div(
 
-
-
                             Div(
-
-
 
                                 Div(
 
                                     Div(
-                                        HTML(
-                                            """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
-
 
                                         Fieldset(
 
-                                            'Delete', 'first_name', 'last_name', 'email', 'department', 'picture'
+                                            'Delete User', 'first_name', 'last_name', 'email', 'department',
 
                                         ),
 
                                         Div(
 
-                                            Submit('submit', 'Log Me In', css_class='btn btn-custom btn-lg btn-block'),
+                                            Submit('submit', 'Delete', css_class='btn btn-custom btn-lg btn-block'),
 
                                             css_class='card shadow-2-strong',
 
