@@ -34,8 +34,6 @@ class UserEditForm(auth_forms.UserChangeForm):
 
                                 Div(
                                     Div(
-                                        HTML(
-                                            """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                         Fieldset(
                                             'Edit', 'id', 'first_name', 'last_name', 'email', 'department', 'picture'

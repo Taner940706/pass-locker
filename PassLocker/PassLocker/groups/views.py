@@ -13,19 +13,19 @@ from PassLocker.main.models import MainModel
 # Create your views here.
 
 
-class ListGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, views.ListView):
+class ListGroupView(LoginRequiredMixin, views.ListView):
     # context_object_name = 'group_list'
     model = GroupModel
     queryset = GroupModel.objects.all()
     template_name = 'groups/list-group-page.html'
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context['groups'] = get_group
-    #     context['this_group'] = GroupModel.objects.get(pk=self.kwargs.get('pk'))
-    #     context['lockers'] = MainModel.objects.filter(group_id=self.kwargs.get('pk'))
-    #     context['has_perm'] = self.request.user.has_perm('main.change_mainmodel')
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['groups'] = get_group
+        context['this_group'] = GroupModel.objects.get(pk=self.kwargs.get('pk'))
+        context['lockers'] = MainModel.objects.filter(group_id=self.kwargs.get('pk'))
+        context['has_perm'] = self.request.user.has_perm('main.change_mainmodel')
+        return context
 
 
 class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateView):

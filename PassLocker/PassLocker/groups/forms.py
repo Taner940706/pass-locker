@@ -62,16 +62,14 @@ class GroupEditForm(GroupBaseForm):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
+
                 Div(
 
                     Div(
 
                         Div(
-
                             Div(
                                 Div(
-                                    HTML(
-                                        """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                     Fieldset(
                                         'Edit Group', 'group_name', 'description',
@@ -117,8 +115,6 @@ class GroupDeleteForm(GroupBaseForm, DisabledFormMixin):
 
                             Div(
                                 Div(
-                                    HTML(
-                                        """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                     Fieldset(
                                         'Delete Group', 'group_name', 'description',

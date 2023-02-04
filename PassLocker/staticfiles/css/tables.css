@@ -1,0 +1,64 @@
+.input-group.md-form.form-sm.form-2 input {
+    border: 1px solid #bdbdbd;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+}
+.input-group.md-form.form-sm.form-2 input.purple-border {
+    border: 1px solid #9e9e9e;
+}
+.input-group.md-form.form-sm.form-2 input[type=text]:focus:not([readonly]).purple-border {
+    border: 1px solid #ba68c8;
+    box-shadow: none;
+}
+.form-2 .input-group-addon {
+    border: 1px solid #ba68c8;
+}
+.table-bordered.red-border, .table-bordered.red-border th, .table-bordered.red-border td {
+    border: 1px solid #ff3547!important;
+}
+.table.table-bordered th {
+    text-align: center;
+}
+
+
+input[type=search] {
+    -webkit-appearance: none;
+    border-radius: 25px;
+    border-color: #2f3089;
+}
+.dataTables_length label{
+    color: black;
+}
+
+.dataTables_filter label {
+    color:black;
+}
+tr, td {
+    color: #2f3089;
+}
+tr {
+    border-bottom-color: #2f3089;
+}
+
+input[type=password] {
+    border-style: none;
+    background-color: #eed269;
+}
+.bi {
+    color: #eed269;
+}
+
+h1 {
+    color: #2f3089;
+}
+
+.btn-success {
+    color: #eed269;
+}
+
+.bi.bi-list {
+    color: #2f3089;
+}
+p{
+    color: #2f3089;
+}

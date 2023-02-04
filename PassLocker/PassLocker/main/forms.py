@@ -48,6 +48,8 @@ class MainCreateForm(MainBaseForm):
         self.helper.form_action = reverse('create locker')
         self.helper.form_method = 'post'
         self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-3'
+        self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
                 Div(
@@ -58,8 +60,6 @@ class MainCreateForm(MainBaseForm):
 
                             Div(
                                 Div(
-                                    HTML(
-                                        """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                     Fieldset(
                                         'Add Locker', 'software_name', 'url', 'username', 'password', 'comment',
@@ -104,9 +104,6 @@ class MainEditForm(MainBaseForm):
 
                             Div(
                                 Div(
-                                    HTML(
-                                        """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
-
                                     Fieldset(
                                         'Edit Locker', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
                                     ),
@@ -152,8 +149,6 @@ class MainDeleteForm(MainBaseForm, DisabledFormMixin):
 
                             Div(
                                 Div(
-                                    HTML(
-                                        """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">"""),
 
                                     Fieldset(
                                         'Delete Locker', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
