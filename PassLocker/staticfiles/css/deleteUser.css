@@ -37,3 +37,7 @@ footer{
 .input-group.mb-2{
     display: none;
 }
+.form-control[readonly] {
+    background-color: #eed269;
+    opacity: 1;
+}

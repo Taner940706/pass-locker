@@ -24,8 +24,6 @@ class UserEditForm(auth_forms.UserChangeForm):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
-
-                Div(
                     Div(
 
                         Div(
@@ -39,7 +37,7 @@ class UserEditForm(auth_forms.UserChangeForm):
                                             'Edit', 'id', 'first_name', 'last_name', 'email', 'department', 'picture'
                                         ),
                                         Div(
-                                            Submit('submit', 'Log Me In', css_class='btn btn-custom btn-lg btn-block'),
+                                            Submit('submit', 'Edit', css_class='btn btn-custom btn-lg btn-block'),
                                             css_class='card shadow-2-strong',
                                         ),
                                         css_class='card-body p-5 text-center'
@@ -54,8 +52,6 @@ class UserEditForm(auth_forms.UserChangeForm):
                     ),
                     css_class='vh-50'
                 ),
-                css_class='col py-3'
-            ),
         )
 
 

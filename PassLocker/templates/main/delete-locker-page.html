@@ -1,6 +1,8 @@
 {% extends 'base/base_auth.html'%}
 {% load crispy_forms_tags %}
 {% block page_content %}
+    <div class="col py-3">
 {% crispy form %}
     {% csrf_token %}
+    </div>
 {% endblock %}

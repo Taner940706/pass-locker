@@ -2,6 +2,8 @@
 {% load crispy_forms_tags %}
 {% block page_content %}
     {% include 'common/toast.html' %}
+    <div class="col py-3">
 {% crispy form %}
     {% csrf_token %}
+    </div>
 {% endblock %}

@@ -8,11 +8,13 @@ body{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.form-control, .form-control:focus {
+.form-control, .form-control:focus, select, select:focus {
     background-color: #eed269;
     margin-bottom: 10%;
 }
-
+.form-select, .form-select:focus {
+    background-color: #eed269;
+}
 #login_h1{
     color: #2f3089;
     text-align: center;

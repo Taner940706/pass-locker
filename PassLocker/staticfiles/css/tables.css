@@ -62,3 +62,6 @@ h1 {
 p{
     color: #2f3089;
 }
+.form-select.form-select-sm{
+    border-color: #2f3089;
+}

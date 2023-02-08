@@ -66,7 +66,7 @@ class MainCreateForm(MainBaseForm):
                                         'user', 'group',
                                     ),
                                     Div(
-                                        Submit('submit', 'Submit', css_class='btn btn-custom btn-lg btn-block'),
+                                        Submit('submit', 'Add', css_class='btn btn-custom btn-lg btn-block'),
                                         css_class='card shadow-2-strong',
                                     ),
                                     css_class='card-body p-5 text-center'
@@ -108,7 +108,7 @@ class MainEditForm(MainBaseForm):
                                         'Edit Locker', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
                                     ),
                                     Div(
-                                        Submit('submit', 'Submit', css_class='btn btn-custom btn-lg btn-block'),
+                                        Submit('submit', 'Edit', css_class='btn btn-custom btn-lg btn-block'),
                                         css_class='card shadow-2-strong',
                                     ),
                                     css_class='card-body p-5 text-center'
@@ -154,7 +154,7 @@ class MainDeleteForm(MainBaseForm, DisabledFormMixin):
                                         'Delete Locker', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
                                     ),
                                     Div(
-                                        Submit('submit', 'Log Me In', css_class='btn btn-custom btn-lg btn-block'),
+                                        Submit('submit', 'Delete', css_class='btn btn-custom btn-lg btn-block'),
                                         css_class='card shadow-2-strong',
                                     ),
                                     css_class='card-body p-5 text-center'
