@@ -6,6 +6,10 @@
 }
 .cardHeader > h1{
     color: #eed269;
+    margin-left: 10px;
+}
+.cardContainer > p{
+    margin-left: 10px;
 }
 .user-heading{
     margin-top: 20px;
