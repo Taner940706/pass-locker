@@ -6,6 +6,7 @@
                 <div class="dropdown pb-4">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
                        id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../../media/{{ request.user.picture }}" alt="{{ request.user.username }}" width="28" height="28" class="rounded-circle">
                         <span class="d-none d-sm-inline mx-4" id="userProfile">{{ request.user.username }}</span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
@@ -26,9 +27,9 @@
                     </li>
                          {% if request.user.is_superuser %}
                         <li>
-                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-speedometer2"></i> <span
-                                    class="ms-1 d-none d-sm-inline">Group Operations</span> <i class="bi bi-toggle-on"></i> </a>
+                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle dropdown-toggle">
+                                <i class="fs-4 bi-collection"></i> <span
+                                    class="ms-1 d-none d-sm-inline">Group Operations</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                 <li>
                                     <a href="{% url 'create group' %}" class="nav-link px-0"><i
@@ -39,9 +40,9 @@
                    {% endif %}
 {#                    {% if request.user.is_superuser %}#}
                         <li>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fs-4 bi-speedometer2"></i> <span
-                                    class="ms-1 d-none d-sm-inline">Groups</span> <i class="bi bi-toggle-on"></i> </a>
+                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle dropdown-toggle">
+                                <i class="fs-4 bi-collection-fill"></i> <span
+                                    class="ms-1 d-none d-sm-inline">Groups</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                {% for group in groups %}
                                 <li>
