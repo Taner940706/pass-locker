@@ -24,10 +24,13 @@ class UserEditForm(auth_forms.UserChangeForm):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
+
                     Div(
 
                         Div(
-
+                            HTML(
+                                """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
+                                <h1 id="login_h1">PassLocker</h1>"""),
                             Div(
 
                                 Div(

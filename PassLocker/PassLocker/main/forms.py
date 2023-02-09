@@ -55,7 +55,9 @@ class MainCreateForm(MainBaseForm):
                 Div(
 
                     Div(
-
+                        HTML(
+                            """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
+                            <h1 id="login_h1">PassLocker</h1>"""),
                         Div(
 
                             Div(
@@ -99,7 +101,9 @@ class MainEditForm(MainBaseForm):
                 Div(
 
                     Div(
-
+                        HTML(
+                            """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
+                            <h1 id="login_h1">PassLocker</h1>"""),
                         Div(
 
                             Div(
@@ -144,7 +148,9 @@ class MainDeleteForm(MainBaseForm, DisabledFormMixin):
                 Div(
 
                     Div(
-
+                        HTML(
+                            """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
+                            <h1 id="login_h1">PassLocker</h1>"""),
                         Div(
 
                             Div(

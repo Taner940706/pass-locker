@@ -40,6 +40,9 @@ class GroupCreateForm(GroupBaseForm):
                 Div(
 
                     Div(
+                        HTML(
+                            """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
+                            <h1 id="login_h1">PassLocker</h1>"""),
 
                         Div(
                             Div(
@@ -82,7 +85,9 @@ class GroupEditForm(GroupBaseForm):
                 Div(
 
                     Div(
-
+                        HTML(
+                            """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
+                            <h1 id="login_h1">PassLocker</h1>"""),
                         Div(
                             Div(
                                 Div(
@@ -126,7 +131,9 @@ class GroupDeleteForm(GroupBaseForm, DisabledFormMixin):
                 Div(
 
                     Div(
-
+                        HTML(
+                            """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
+                            <h1 id="login_h1">PassLocker</h1>"""),
                         Div(
 
                             Div(
