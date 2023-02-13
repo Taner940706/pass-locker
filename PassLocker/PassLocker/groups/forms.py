@@ -36,6 +36,8 @@ class GroupCreateForm(GroupBaseForm):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
+                HTML("""<a type="button" href="javascript:history.back()"
+                                        class="btn btn-sm btn-info text-white"> Go Back </a>"""),
 
                 Div(
 
@@ -81,6 +83,8 @@ class GroupEditForm(GroupBaseForm):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
+                HTML("""<a type="button" href="javascript:history.back()"
+                                        class="btn btn-sm btn-info text-white"> Go Back </a>"""),
 
                 Div(
 
@@ -128,6 +132,8 @@ class GroupDeleteForm(GroupBaseForm, DisabledFormMixin):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
+                HTML("""<a type="button" href="javascript:history.back()"
+                                        class="btn btn-sm btn-info text-white"> Go Back </a>"""),
                 Div(
 
                     Div(

@@ -14,6 +14,7 @@ from PassLocker.main.models import MainModel
 
 
 class CreateLockerView(LoginRequiredMixin, views.CreateView):
+
     template_name = 'main/create-locker-page.html'
     model = MainModel
     form_class = MainCreateForm

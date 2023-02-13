@@ -52,7 +52,10 @@ class MainCreateForm(MainBaseForm):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
+                HTML("""<a type="button" href="javascript:history.back()"
+                                class="btn btn-sm btn-info text-white"> Go Back </a>"""),
                 Div(
+
 
                     Div(
                         HTML(
@@ -98,6 +101,8 @@ class MainEditForm(MainBaseForm):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
+                HTML("""<a type="button" href="javascript:history.back()"
+                                        class="btn btn-sm btn-info text-white"> Go Back </a>"""),
                 Div(
 
                     Div(
@@ -145,6 +150,8 @@ class MainDeleteForm(MainBaseForm, DisabledFormMixin):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
+                HTML("""<a type="button" href="javascript:history.back()"
+                                        class="btn btn-sm btn-info text-white"> Go Back </a>"""),
                 Div(
 
                     Div(

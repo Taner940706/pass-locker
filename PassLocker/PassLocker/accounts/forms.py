@@ -24,7 +24,8 @@ class UserEditForm(auth_forms.UserChangeForm):
         self.helper.field_class = 'col-lg-8'
         self.helper.layout = Layout(
             Div(
-
+                HTML("""<a type="button" href="javascript:history.back()"
+                                        class="btn btn-sm btn-info text-white"> Go Back </a>"""),
                     Div(
 
                         Div(
@@ -143,6 +144,8 @@ class UserDeleteForm(forms.ModelForm, DisabledFormMixin):
         self.helper.layout = Layout(
 
             Div(
+                HTML("""<a type="button" href="javascript:history.back()"
+                                        class="btn btn-sm btn-info text-white"> Go Back </a>"""),
                 HTML(
                     """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
                     <h1 id="login_h1">PassLocker</h1>"""),
