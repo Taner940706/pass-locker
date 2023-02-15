@@ -19,6 +19,9 @@
                                     <input type="hidden" name="next" value="{{ next }}">
                                     <input type="submit" name="submit" value="Submit" class="btn btn-primary" id="submit-id-submit">
                                     {% csrf_token %}
+                                    <hr>
+                                            <a class="link-primary" href="{% url 'register user' %}">You have a
+                                                registration?</a>
                                      </div>
                             </div>
                         </div>

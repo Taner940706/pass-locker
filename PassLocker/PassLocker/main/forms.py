@@ -41,7 +41,7 @@ class MainBaseForm(forms.ModelForm):
 
 
 class MainCreateForm(MainBaseForm):
-    def __init__(self, *args, **kwargs):
+    def __init__(self,*args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_id = 'CreateNewLockerForm'
@@ -164,7 +164,7 @@ class MainDeleteForm(MainBaseForm, DisabledFormMixin):
                                 Div(
 
                                     Fieldset(
-                                        'Delete Locker', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
+                                        'Delete Locker', 'software_name', 'url', 'username', 'password', 'comment','user', 'group',
                                     ),
                                     Div(
                                         Submit('submit', 'Delete', css_class='btn btn-custom btn-lg btn-block'),

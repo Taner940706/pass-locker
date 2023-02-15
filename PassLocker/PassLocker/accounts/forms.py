@@ -90,6 +90,7 @@ class UserCreateForm(auth_forms.UserCreationForm):
                             Div(
                                 Div(
 
+
                                     Fieldset(
 
                                         'Registration', 'username', 'email', 'password1', 'password2',
@@ -97,9 +98,14 @@ class UserCreateForm(auth_forms.UserCreationForm):
                                     ),
                                     Div(
                                         Submit('submit', 'Register', css_class='btn btn-custom btn-lg btn-block'),
+
                                         css_class='card shadow-2-strong',
                                     ),
+                                    HTML("""<br>
+                                            <a class="link-primary" href="{% url 'login user' %}">You have a
+                                                registration?</a>"""),
                                     css_class='card-body p-5 text-center'
+
                                 ),
                                 css_class='card shadow-2-strong'
                             ),
@@ -203,6 +209,7 @@ class UserDeleteForm(forms.ModelForm, DisabledFormMixin):
                 css_class='col py-3'
 
             ),
+
 
         )
 

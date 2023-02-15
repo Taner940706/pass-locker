@@ -36,3 +36,7 @@ footer{
     color: #2f3089;
     text-align: center;
 }
+
+a.link-primary {
+    color: #eed269;
+}
