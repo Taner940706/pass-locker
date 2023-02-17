@@ -14,7 +14,6 @@ from PassLocker.main.models import MainModel
 
 
 class ListGroupView(LoginRequiredMixin, views.ListView):
-    # context_object_name = 'group_list'
     model = GroupModel
     queryset = GroupModel.objects.all()
     template_name = 'groups/list-group-page.html'
@@ -44,7 +43,7 @@ class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateV
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['groups'] = get_group
+        # context['groups'] = get_group
         return context
 
     def form_invalid(self, form):

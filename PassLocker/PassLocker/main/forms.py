@@ -41,7 +41,7 @@ class MainBaseForm(forms.ModelForm):
 
 
 class MainCreateForm(MainBaseForm):
-    def __init__(self,*args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.helper = FormHelper(self)
         self.helper.form_id = 'CreateNewLockerForm'
