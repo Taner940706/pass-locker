@@ -9,13 +9,10 @@ UserModel = get_user_model()
 
 
 # customize accounts for django admins
-
-
 @admin.register(UserModel)
 class UserAdmin(auth_admin.UserAdmin):
     form = UserEditForm
     add_form = UserCreateForm
-
     fieldsets = (
         (
             None,

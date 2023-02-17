@@ -1,18 +1,18 @@
 {% extends 'base/base_auth.html' %}
 {% block page_content %}
     <div class="col py-3">
-     {% include 'common/toast.html' %}
+        {% include 'common/toast.html' %}
         <div class="panel panel-default">
             <div class="panel-heading">
                 <div class="page-heading"><h1><i class="bi bi-list"></i>{{ this_group.group_name }}</h1></div>
-                {% if request.user.is_superuser%}
-                                    <button type="button" class="btn btn-primary" title="Edit"><a
-                                            href= {% url 'edit group' pk=this_group.pk %}><i class="bi bi-pencil"></i></a>
-                                    </button>
-                                    <button type="button" class="btn btn-danger" title="Delete"><a
-                                            href= {% url 'delete group' pk=this_group.pk %}><i class="bi bi-trash"></i></a>
-                                    </button>
-                                {% endif %}
+                {% if request.user.is_superuser %}
+                    <button type="button" class="btn btn-primary" title="Edit"><a
+                            href= {% url 'edit group' pk=this_group.pk %}><i class="bi bi-pencil"></i></a>
+                    </button>
+                    <button type="button" class="btn btn-danger" title="Delete"><a
+                            href= {% url 'delete group' pk=this_group.pk %}><i class="bi bi-trash"></i></a>
+                    </button>
+                {% endif %}
             </div>
             <div class="panel-body">
                 <div class="remove-messages"></div>
@@ -20,55 +20,53 @@
                 </div>
                 <br>
                 {% if lockers.count == 0 %}
-                <p>No records!</p>
+                    <p>No records!</p>
                 {% else %}
-                <table class="table" id="LockerTable">
-                    <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Software name</th>
-                        <th>URL</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Comment</th>
-                        <th>Created</th>
-                        <th>Updated</th>
-                        <th style="margin: 0 auto;">Option</th>
-                    </tr>
-                    </thead>
-                    {% for locker in lockers %}
+                    <table class="table" id="LockerTable">
+                        <thead>
                         <tr>
-                            <td>{{ locker.id }}</td>
-                            <td>{{ locker.software_name }}</td>
-                            <td>{{ locker.url }}</td>
-                            <td>{{ locker.username }}</td>
-                            <td><input type="password" value={{ locker.password }} readonly></td>
-                            <td>{{ locker.comment }}</td>
-                            <td>Created: {{ locker.created_date }}</td>
-                            <td>Updated: {{ locker.updated_date }}</td>
-                            <td>
-                                {% if has_perm and request.user.pk == locker.user_id or request.user.is_superuser%}
-                                    <button type="button" class="btn btn-primary" title="Edit"><a
-                                            href= {% url 'edit locker' pk=locker.id %}><i class="bi bi-pencil"></i></a>
-                                    </button>
-                                    <br/>
-                                    <button type="button" class="btn btn-danger" title="Delete"><a
-                                            href= {% url 'delete locker' pk=locker.id %}><i class="bi bi-trash"></i></a>
-                                    </button>
-                                {% endif %}
-                            </td>
+                            <th>ID</th>
+                            <th>Software name</th>
+                            <th>URL</th>
+                            <th>Username</th>
+                            <th>Password</th>
+                            <th>Comment</th>
+                            <th>Created</th>
+                            <th>Updated</th>
+                            <th style="margin: 0 auto;">Option</th>
                         </tr>
-                    {% endfor %}
-                </table>
-            {% endif %}
+                        </thead>
+                        {% for locker in lockers %}
+                            <tr>
+                                <td>{{ locker.id }}</td>
+                                <td>{{ locker.software_name }}</td>
+                                <td>{{ locker.url }}</td>
+                                <td>{{ locker.username }}</td>
+                                <td><input type="password" value={{ locker.password }} readonly></td>
+                                <td>{{ locker.comment }}</td>
+                                <td>Created: {{ locker.created_date }}</td>
+                                <td>Updated: {{ locker.updated_date }}</td>
+                                <td>
+                                    {% if has_perm and request.user.pk == locker.user_id or request.user.is_superuser %}
+                                        <button type="button" class="btn btn-primary" title="Edit"><a
+                                                href= {% url 'edit locker' pk=locker.id %}><i class="bi bi-pencil"></i></a>
+                                        </button>
+                                        <br/>
+                                        <button type="button" class="btn btn-danger" title="Delete"><a
+                                                href= {% url 'delete locker' pk=locker.id %}><i class="bi bi-trash"></i></a>
+                                        </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                {% endif %}
             </div>
         </div>
         {% if has_perm %}
-{#            <a href= {% url 'create locker' %}><i class="bi bi-pencil"></i>Add Locker</a>#}
             <button type="button" class="btn btn-success" title="Add">Add locker<a
-                                            href= {% url 'create locker' %}><i class="bi bi-pencil"></i></a>
-                                    </button>
-
+                    href= {% url 'create locker' %}><i class="bi bi-pencil"></i></a>
+            </button>
         {% endif %}
     </div>
 {% endblock %}

@@ -3,11 +3,11 @@
 {% load crispy_forms_filters %}
 {% block page_content %}
     {% include 'common/toast.html' %}
-<form class="form-horizontal" id="createNewModemForm" action="{% url 'login user' %}" method="POST"
-                  enctype="multipart/form-data">
-    <fieldset>
-        <img src="{% static 'photos/padlock-no-background.png' %}" class="centerImage" alt="лого">
-    <h1 id="login_h1">PassLocker</h1>
+    <form class="form-horizontal" id="createNewModemForm" action="{% url 'login user' %}" method="POST"
+          enctype="multipart/form-data">
+        <fieldset>
+            <img src="{% static 'photos/padlock-no-background.png' %}" class="centerImage" alt="лого">
+            <h1 id="login_h1">PassLocker</h1>
             <section class="vh-50">
                 <div class="container py-5 h-40">
                     <div class="row d-flex justify-content-center align-items-center h-30">
@@ -17,19 +17,18 @@
                                     <h2>Login</h2>
                                     {{ form|crispy }}
                                     <input type="hidden" name="next" value="{{ next }}">
-                                    <input type="submit" name="submit" value="Submit" class="btn btn-primary" id="submit-id-submit">
+                                    <input type="submit" name="submit" value="Submit" class="btn btn-primary"
+                                           id="submit-id-submit">
                                     {% csrf_token %}
                                     <hr>
-                                            <a class="link-primary" href="{% url 'register user' %}">You haven't a
-                                                registration?</a>
-                                     </div>
+                                    <a class="link-primary" href="{% url 'register user' %}">You haven't a
+                                        registration?</a>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
-    </fieldset>
-</form>
+        </fieldset>
+    </form>
 {% endblock %}
-
-

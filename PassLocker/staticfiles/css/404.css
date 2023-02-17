@@ -1,15 +1,19 @@
 .col-xs-12.col-md-12 {
     display: none;
 }
-.row.justify-content-center{
+
+.row.justify-content-center {
     background-color: #eed269;
 }
-.btn.btn-sm.btn-info.text-white{
+
+.btn.btn-sm.btn-info.text-white {
     color: #2f3089;
 }
-.card-header.display-1.text-muted.text-center{
+
+.card-header.display-1.text-muted.text-center {
     color: #eed269;
 }
-.card-subtitle.mb-2.text-muted.text-center{
+
+.card-subtitle.mb-2.text-muted.text-center {
     color: #eed269;
 }

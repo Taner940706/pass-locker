@@ -2,7 +2,6 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
-
 from PassLocker.core.get_group import get_group
 from PassLocker.core.view_mixin import GetContextAndURLViewMixin
 from PassLocker.groups.forms import GroupCreateForm, GroupEditForm, GroupDeleteForm
@@ -10,9 +9,7 @@ from PassLocker.groups.models import GroupModel
 from PassLocker.main.models import MainModel
 
 
-# Create your views here.
-
-
+# list all groups
 class ListGroupView(LoginRequiredMixin, views.ListView):
     model = GroupModel
     queryset = GroupModel.objects.all()
@@ -27,6 +24,7 @@ class ListGroupView(LoginRequiredMixin, views.ListView):
         return context
 
 
+# create group
 class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateView):
     template_name = 'groups/create-group-page.html'
     form_class = GroupCreateForm
@@ -39,11 +37,8 @@ class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateV
         messages.warning(self.request, "Successful operation!")
         return super().form_valid(form)
 
-
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['groups'] = get_group
         return context
 
     def form_invalid(self, form):
@@ -51,6 +46,7 @@ class CreateGroupView(LoginRequiredMixin, PermissionRequiredMixin, views.CreateV
         return super().form_invalid(form)
 
 
+# edit group
 class EditGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
     template_name = 'groups/edit-group-page.html'
     model = GroupModel
@@ -62,6 +58,7 @@ class EditGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionReq
         return super().form_valid(form)
 
 
+# delete group
 class DeleteGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionRequiredMixin, views.UpdateView):
     template_name = 'groups/delete-group-page.html'
     model = GroupModel
@@ -75,4 +72,3 @@ class DeleteGroupView(GetContextAndURLViewMixin, LoginRequiredMixin, PermissionR
     def form_invalid(self, form):
         messages.error(self.request, "Failed operation!")
         return super().form_invalid(form)
-

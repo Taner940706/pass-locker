@@ -3,18 +3,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
-
 from PassLocker.core.get_group import get_group
 from PassLocker.core.view_mixin import GetContextAndURLViewMixin
 from PassLocker.main.forms import MainCreateForm, MainEditForm, MainDeleteForm
 from PassLocker.main.models import MainModel
 
 
-# Create your views here.
-
-
+# create locker
 class CreateLockerView(LoginRequiredMixin, views.CreateView):
-
     template_name = 'main/create-locker-page.html'
     model = MainModel
     form_class = MainCreateForm
@@ -36,6 +32,7 @@ class CreateLockerView(LoginRequiredMixin, views.CreateView):
         return super().form_invalid(form)
 
 
+# edit locker
 class EditLockerView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessageMixin, views.UpdateView):
     template_name = 'main/edit-locker-page.html'
     model = MainModel
@@ -50,6 +47,7 @@ class EditLockerView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessa
         return super().form_invalid(form)
 
 
+# delete locker
 class DeleteLockerView(GetContextAndURLViewMixin, LoginRequiredMixin, views.UpdateView):
     template_name = 'main/delete-locker-page.html'
     model = MainModel
@@ -62,5 +60,3 @@ class DeleteLockerView(GetContextAndURLViewMixin, LoginRequiredMixin, views.Upda
     def form_invalid(self, form):
         messages.error(self.request, "Failed operation!")
         return super().form_invalid(form)
-
-

@@ -1,10 +1,11 @@
-body{
+body {
     background-color: #eed269;
     font-family: "Courier New";
     color: #eed269;
 }
-.p-5{
-     background-color: #2f3089;
+
+.p-5 {
+    background-color: #2f3089;
 }
 
 .form-control, .form-control:focus {
@@ -12,7 +13,7 @@ body{
     margin-bottom: 10%;
 }
 
-#login_h1{
+#login_h1 {
     color: #2f3089;
     text-align: center;
 }
@@ -24,12 +25,12 @@ body{
     width: 25%;
 }
 
-#submit-id-submit{
+#submit-id-submit {
     background-color: #eed269;
     color: #2f3089;
 }
 
-footer{
+footer {
     color: #2f3089;
     text-align: center;
 }

@@ -2,73 +2,55 @@
 {% load static %}
 {% block page_content %}
     <div class="col py-3">
-    {% include 'common/toast.html' %}
-<div class="row">
-    <div class="col-md-4"><h1><i class="bi bi-list"></i>Dashboard</h1></div>
-                <div class="col-md-4"><h1><i class="bi bi-person-circle"></i>  {{ request.user.username }}</h1></div>
-    <div class="col-md-4"><h1>{{ request.user.first_name }} {{ request.user.last_name }}</h1></div>
-
-        <div class="col-md-4">
-		<div class="card">
-		  <div class="cardHeader" style="background-color:#245580;">
-		    <h1>  {{ all_groups }}</h1>
-		  </div>
-
-		  <div class="cardContainer">
-		    <p> <i class="glyphicon glyphicon-tasks"></i> Count of all groups</p>
-		  </div>
-		</div>
+        {% include 'common/toast.html' %}
+        <div class="row">
+            <div class="col-md-4"><h1><i class="bi bi-list"></i>Dashboard</h1></div>
+            <div class="col-md-4"><h1><i class="bi bi-person-circle"></i> {{ request.user.username }}</h1></div>
+            <div class="col-md-4"><h1>{{ request.user.first_name }} {{ request.user.last_name }}</h1></div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="cardHeader" style="background-color:#245580;">
+                        <h1>  {{ all_groups }}</h1>
+                    </div>
+                    <div class="cardContainer">
+                        <p><i class="glyphicon glyphicon-tasks"></i> Count of all groups</p>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="cardHeader" style="background-color:#245544;">
+                        <h1>  {{ all_user_lockers }}</h1>
+                    </div>
+                    <div class="cardContainer">
+                        <p><i class="glyphicon glyphicon-user"></i> Count of all users lockers</p>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="cardHeader" style="background-color:#245580;">
+                        <h1>  {{ all_lockers }}</h1>
+                    </div>
+                    <div class="cardContainer">
+                        <p><i class="glyphicon glyphicon-tasks"></i> Count of all lockers</p>
+                    </div>
+                </div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div class="col-md-4">
+                {% include 'analyses/count_locker_by_time.html' %}
+            </div>
+            <div class="col-md-4">
+                {% include 'analyses/count_locker_by_username.html' %}
+            </div>
+            <div class="col-md-7">
+                {% include 'analyses/count_group_by_time.html' %}
+            </div>
         </div>
-
-<br/>
-<div class="col-md-4">
-<div class="card">
-		  <div class="cardHeader" style="background-color:#245544;">
-		    <h1>  {{ all_user_lockers }}</h1>
-		  </div>
-
-		  <div class="cardContainer">
-		    <p> <i class="glyphicon glyphicon-user"></i> Count of all users lockers</p>
-		  </div>
-		</div>
-</div>
-<br/>
-<div class="col-md-4">
-        		<div class="card">
-		  <div class="cardHeader" style="background-color:#245580;">
-		    <h1>  {{ all_lockers }}</h1>
-		  </div>
-
-		  <div class="cardContainer">
-		    <p> <i class="glyphicon glyphicon-tasks"></i> Count of all lockers</p>
-		  </div>
-		</div>
-</div>
-{#        <div class="col-md-4">#}
-{#                <!-- check user have uploaded picture, if not, upload default pic-->#}
-{#                {% if request.user.picture %}#}
-{#                    <img src="../../media/{{ request.user.picture }}" class="userImage" alt="{{ request.username }}"/>#}
-{#                {% else %}#}
-{#                    <img src="{% static 'photos/anonym.png' %}" class="userImage" alt="anonym"/>#}
-{#                {% endif %}#}
-{#            </div>#}
-
-<br/>
-<br/>
-<br/>
-        <div class="col-md-4">
-        {% include 'analyses/count_locker_by_time.html' %}
-        </div>
-<div class="col-md-4">
-        {% include 'analyses/count_locker_by_username.html' %}
-</div>
-    <div class="col-md-7">
-        {% include 'analyses/count_group_by_time.html' %}
-    </div>
-
-
-
-
-</div>
     </div>
 {% endblock %}

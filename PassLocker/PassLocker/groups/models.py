@@ -1,6 +1,5 @@
 from django.core.validators import MinLengthValidator
 from django.db import models
-
 from PassLocker.core.validators import validate_only_letters
 
 
@@ -10,7 +9,7 @@ class GroupModel(models.Model):
     GROUP_NAME_MIN_LEN = 5
     group_name = models.CharField(
         max_length=GROUP_NAME_MAX_LEN,
-        validators=(MinLengthValidator(GROUP_NAME_MIN_LEN), validate_only_letters, ),
+        validators=(MinLengthValidator(GROUP_NAME_MIN_LEN), validate_only_letters,),
         unique=True,
         null=False,
         blank=False,

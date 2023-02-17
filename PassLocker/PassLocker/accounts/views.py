@@ -4,10 +4,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import generic as views
 from django.contrib.auth import views as auth_views, get_user_model, login
-
 from PassLocker.accounts.forms import UserCreateForm, UserEditForm, UserDeleteForm
 from PassLocker.core.view_mixin import GetContextAndURLViewMixin
-
 
 UserModel = get_user_model()
 
@@ -47,7 +45,6 @@ class UserEditView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessage
     template_name = 'accounts/user-edit-page.html'
     model = UserModel
     form_class = UserEditForm
-    # success_message = "User was updated successfully"
 
     def form_invalid(self, form):
         messages.error(self.request, "Failed operation!")
@@ -58,16 +55,8 @@ class UserEditView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessage
         return super().form_valid(form)
 
 
-# class UserDeleteView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessageMixin, views.DeleteView):
-#     template_name = 'accounts/user-delete-page.html'
-#     model = UserModel
-#     success_message = "User was deleted successfully"
-
-
 class UserDeleteView(GetContextAndURLViewMixin, LoginRequiredMixin, SuccessMessageMixin, views.UpdateView):
-
     template_name = 'accounts/user-delete-page.html'
-
     form_class = UserDeleteForm
     model = UserModel
     success_message = "User was deleted successfully"
@@ -84,6 +73,3 @@ class Handler404(views.TemplateView):
 
 class Handler500(views.TemplateView):
     template_name = '500.html'
-
-
-

@@ -7,8 +7,8 @@ from PassLocker.groups.models import GroupModel
 from PassLocker.main.models import MainModel
 
 
+# mixin for view, override get_contex_data and get_success_url
 class GetContextAndURLViewMixin(views.DetailView):
-
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(**kwargs)
         context['groups'] = get_group
@@ -26,5 +26,3 @@ class GetContextAndURLViewMixin(views.DetailView):
     def get_success_url(self):
         messages.success = "Group was edited successfully!"
         return reverse_lazy('details user', kwargs={'pk': self.request.user.pk})
-
-

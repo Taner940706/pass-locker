@@ -1,61 +1,61 @@
 {% block nav_content %}
-<div class="container-fluid">
+    <div class="container-fluid">
     <div class="row flex-nowrap">
-        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: #2f3089">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <div class="dropdown pb-4">
-                    <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
-                       id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../../../media/{{ request.user.picture }}" alt="{{ request.user.username }}" width="28" height="28" class="rounded-circle">
-                        <span class="d-none d-sm-inline mx-4" id="userProfile">{{ request.user.username }}</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="{% url 'edit user' pk=request.user.pk %}">Edit profile</a>
-                        </li>
-                        <li><a class="dropdown-item" href="{% url 'delete user' pk=request.user.pk %}">Delete</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="{% url 'logout user' %}">Logout</a></li>
-                    </ul>
-                </div>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li>
-                        <a href="{% url 'details user' pk=request.user.pk %}" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
-                        </a>
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0" style="background-color: #2f3089">
+        <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+            <div class="dropdown pb-4">
+                <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle"
+                   id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="../../../media/{{ request.user.picture }}" alt="{{ request.user.username }}" width="28"
+                         height="28" class="rounded-circle">
+                    <span class="d-none d-sm-inline mx-4" id="userProfile">{{ request.user.username }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                    <li><a class="dropdown-item" href="{% url 'edit user' pk=request.user.pk %}">Edit profile</a>
                     </li>
-                         {% if request.user.is_superuser %}
-                        <li>
-                            <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle dropdown-toggle">
-                                <i class="fs-4 bi-collection"></i> <span
-                                    class="ms-1 d-none d-sm-inline">Group Operations</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
-                                <li>
-                                    <a href="{% url 'create group' %}" class="nav-link px-0"><i
-                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Add Group</span></a>
-                                </li>
-                            </ul>
-                        </li>
-                   {% endif %}
-{#                    {% if request.user.is_superuser %}#}
-                        <li>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle dropdown-toggle">
-                                <i class="fs-4 bi-collection-fill"></i> <span
-                                    class="ms-1 d-none d-sm-inline">Groups</span> </a>
-                            <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                               {% for group in groups %}
-                                <li>
-                                    <a href="{% url 'list group' pk=group.pk %}" class="nav-link px-0"><i
-                                            class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">{{ group.group_name }}</span></a>
-                                </li>
-                                {% endfor %}
-                            </ul>
-                        </li>
-{#                    {% endif %}#}
+                    <li><a class="dropdown-item" href="{% url 'delete user' pk=request.user.pk %}">Delete</a></li>
+                    <li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="{% url 'logout user' %}">Logout</a></li>
                 </ul>
-                <hr>
-
             </div>
+            <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                <li>
+                    <a href="{% url 'details user' pk=request.user.pk %}" class="nav-link align-middle px-0">
+                        <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dashboard</span>
+                    </a>
+                </li>
+                {% if request.user.is_superuser %}
+                    <li>
+                        <a href="#submenu2" data-bs-toggle="collapse"
+                           class="nav-link px-0 align-middle dropdown-toggle">
+                            <i class="fs-4 bi-collection"></i> <span
+                                class="ms-1 d-none d-sm-inline">Group Operations</span> </a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                            <li>
+                                <a href="{% url 'create group' %}" class="nav-link px-0"><i
+                                        class="bi bi-sticky-fill"></i> <span class="d-none d-sm-inline">Add Group</span></a>
+                            </li>
+                        </ul>
+                    </li>
+                {% endif %}
+                <li>
+                    <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle dropdown-toggle">
+                        <i class="fs-4 bi-collection-fill"></i> <span
+                            class="ms-1 d-none d-sm-inline">Groups</span> </a>
+                    <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                        {% for group in groups %}
+                            <li>
+                                <a href="{% url 'list group' pk=group.pk %}" class="nav-link px-0"><i
+                                        class="bi bi-sticky-fill"></i> <span
+                                        class="d-none d-sm-inline">{{ group.group_name }}</span></a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+            </ul>
+            <hr>
         </div>
+    </div>
 {% endblock %}

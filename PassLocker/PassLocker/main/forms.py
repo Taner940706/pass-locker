@@ -2,7 +2,6 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Fieldset, Div, Layout, HTML
 from django import forms
 from django.urls import reverse
-
 from PassLocker.core.form_mixins import DisabledFormMixin
 from PassLocker.main.models import MainModel
 
@@ -55,14 +54,11 @@ class MainCreateForm(MainBaseForm):
                 HTML("""<a type="button" href="javascript:history.back()"
                                 class="btn btn-sm btn-info text-white"> Go Back </a>"""),
                 Div(
-
-
                     Div(
                         HTML(
                             """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
                             <h1 id="login_h1">PassLocker</h1>"""),
                         Div(
-
                             Div(
                                 Div(
 
@@ -89,7 +85,6 @@ class MainCreateForm(MainBaseForm):
         )
 
 
-
 class MainEditForm(MainBaseForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -104,17 +99,16 @@ class MainEditForm(MainBaseForm):
                 HTML("""<a type="button" href="javascript:history.back()"
                                         class="btn btn-sm btn-info text-white"> Go Back </a>"""),
                 Div(
-
                     Div(
                         HTML(
                             """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
                             <h1 id="login_h1">PassLocker</h1>"""),
                         Div(
-
                             Div(
                                 Div(
                                     Fieldset(
-                                        'Edit Locker', 'software_name', 'url', 'username', 'password', 'comment', 'user', 'group',
+                                        'Edit Locker', 'software_name', 'url', 'username', 'password', 'comment',
+                                        'user', 'group',
                                     ),
                                     Div(
                                         Submit('submit', 'Edit', css_class='btn btn-custom btn-lg btn-block'),
@@ -153,18 +147,16 @@ class MainDeleteForm(MainBaseForm, DisabledFormMixin):
                 HTML("""<a type="button" href="javascript:history.back()"
                                         class="btn btn-sm btn-info text-white"> Go Back </a>"""),
                 Div(
-
                     Div(
                         HTML(
                             """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
                             <h1 id="login_h1">PassLocker</h1>"""),
                         Div(
-
                             Div(
                                 Div(
-
                                     Fieldset(
-                                        'Delete Locker', 'software_name', 'url', 'username', 'password', 'comment','user', 'group',
+                                        'Delete Locker', 'software_name', 'url', 'username', 'password', 'comment',
+                                        'user', 'group',
                                     ),
                                     Div(
                                         Submit('submit', 'Delete', css_class='btn btn-custom btn-lg btn-block'),

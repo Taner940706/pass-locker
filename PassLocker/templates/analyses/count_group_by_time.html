@@ -1,45 +1,42 @@
-
-        <canvas id="myChart2" style="width:50%;max-width:1000px"></canvas>
-
-    <script>
-        const ctx2 = document.getElementById('myChart2');
-
-        new Chart(ctx2, {
-            plugins: [{
-                beforeInit: function (chart) {
-                    chart.legend.afterFit = function () {
-                        this.height = this.height + 50;
-                    };
-                }
-            }],
-            type: 'bar',
-            data: {
-                labels: [{% for i in count_group_by_time.label_group_in_time %} '{{ i }}', {% endfor %}],
-                datasets: [{
-                    label: 'Count of lockers by username',
-                    data: {{ count_group_by_time.data_group_in_time }},
-                    borderWidth: 1,
-                    backgroundColor: [
-                        "#b91d47",
-                        "#00aba9",
-                        "#2b5797",
-                        "#e8c3b9",
-                        "#1e7145"
-                    ],
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                responsive: true,
-                legend: {
-                    labels: {
-                        fontSize: 20,
-                    }
-                },
+<canvas id="myChart2" style="width:50%;max-width:1000px"></canvas>
+<script>
+    const ctx2 = document.getElementById('myChart2');
+    new Chart(ctx2, {
+        plugins: [{
+            beforeInit: function (chart) {
+                chart.legend.afterFit = function () {
+                    this.height = this.height + 50;
+                };
             }
-        });
-    </script>
+        }],
+        type: 'bar',
+        data: {
+            labels: [{% for i in count_group_by_time.label_group_in_time %} '{{ i }}', {% endfor %}],
+            datasets: [{
+                label: 'Count of lockers by username',
+                data: {{ count_group_by_time.data_group_in_time }},
+                borderWidth: 1,
+                backgroundColor: [
+                    "#b91d47",
+                    "#00aba9",
+                    "#2b5797",
+                    "#e8c3b9",
+                    "#1e7145"
+                ],
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            responsive: true,
+            legend: {
+                labels: {
+                    fontSize: 20,
+                }
+            },
+        }
+    });
+</script>

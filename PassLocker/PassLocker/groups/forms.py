@@ -1,8 +1,6 @@
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit, Layout, Div, HTML, Fieldset
 from django import forms
-from django.urls import reverse
-
 from PassLocker.core.form_mixins import DisabledFormMixin
 from PassLocker.groups.models import GroupModel
 
@@ -38,18 +36,14 @@ class GroupCreateForm(GroupBaseForm):
             Div(
                 HTML("""<a type="button" href="javascript:history.back()"
                                         class="btn btn-sm btn-info text-white"> Go Back </a>"""),
-
                 Div(
-
                     Div(
                         HTML(
                             """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
                             <h1 id="login_h1">PassLocker</h1>"""),
-
                         Div(
                             Div(
                                 Div(
-
                                     Fieldset(
                                         'Add Group', 'group_name', 'description',
                                     ),
@@ -85,9 +79,7 @@ class GroupEditForm(GroupBaseForm):
             Div(
                 HTML("""<a type="button" href="javascript:history.back()"
                                         class="btn btn-sm btn-info text-white"> Go Back </a>"""),
-
                 Div(
-
                     Div(
                         HTML(
                             """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
@@ -135,16 +127,13 @@ class GroupDeleteForm(GroupBaseForm, DisabledFormMixin):
                 HTML("""<a type="button" href="javascript:history.back()"
                                         class="btn btn-sm btn-info text-white"> Go Back </a>"""),
                 Div(
-
                     Div(
                         HTML(
                             """<img src="/static/photos/padlock-no-background.png" class="centerImage" alt="лого">
                             <h1 id="login_h1">PassLocker</h1>"""),
                         Div(
-
                             Div(
                                 Div(
-
                                     Fieldset(
                                         'Delete Group', 'group_name', 'description',
                                     ),

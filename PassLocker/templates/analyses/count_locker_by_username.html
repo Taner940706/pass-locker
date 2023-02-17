@@ -1,45 +1,42 @@
-
-        <canvas id="myChart1" style="width:50%;max-width:1000px"></canvas>
-
-    <script>
-        const ctx1 = document.getElementById('myChart1');
-
-        new Chart(ctx1, {
-            plugins: [{
-                beforeInit: function (chart) {
-                    chart.legend.afterFit = function () {
-                        this.height = this.height + 50;
-                    };
-                }
-            }],
-            type: 'pie',
-            data: {
-                labels: [{% for i in count_locker_by_username.label_username %} '{{ i }}', {% endfor %}],
-                datasets: [{
-                    label: 'Count of lockers by username',
-                    data: {{ count_locker_by_username.data_username }},
-                    borderWidth: 1,
-                    backgroundColor: [
-                        "#b91d47",
-                        "#00aba9",
-                        "#2b5797",
-                        "#e8c3b9",
-                        "#1e7145"
-                    ],
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                },
-                responsive: true,
-                legend: {
-                    labels: {
-                        fontSize: 20,
-                    }
-                },
+<canvas id="myChart1" style="width:50%;max-width:1000px"></canvas>
+<script>
+    const ctx1 = document.getElementById('myChart1');
+    new Chart(ctx1, {
+        plugins: [{
+            beforeInit: function (chart) {
+                chart.legend.afterFit = function () {
+                    this.height = this.height + 50;
+                };
             }
-        });
-    </script>
+        }],
+        type: 'pie',
+        data: {
+            labels: [{% for i in count_locker_by_username.label_username %} '{{ i }}', {% endfor %}],
+            datasets: [{
+                label: 'Count of lockers by username',
+                data: {{ count_locker_by_username.data_username }},
+                borderWidth: 1,
+                backgroundColor: [
+                    "#b91d47",
+                    "#00aba9",
+                    "#2b5797",
+                    "#e8c3b9",
+                    "#1e7145"
+                ],
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            },
+            responsive: true,
+            legend: {
+                labels: {
+                    fontSize: 20,
+                }
+            },
+        }
+    });
+</script>
