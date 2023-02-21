@@ -8,15 +8,21 @@ from PassLocker.main.models import MainModel
 UserModel = get_user_model()
 
 
-class GroupModelSerializer(serializers.ModelSerializer):
+class ShortGroupModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = GroupModel
         fields = '__all__'
 
 
-class LockerModelSerializer(serializers.ModelSerializer):
+class ShortUserModelSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MainModel
+        model = UserModel
+        fields = '__all__'
+
+
+class GroupModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = GroupModel
         fields = '__all__'
 
 
@@ -29,7 +35,15 @@ class GroupModelCreateSerializer(serializers.ModelSerializer):
         return GroupModel.objects.create(**validated_data)
 
 
-class MainModelCreateSerializer(serializers.ModelSerializer):
+class LockerModelSerializer(serializers.ModelSerializer):
+    user = ShortUserModelSerializer()
+    group = ShortGroupModelSerializer()
+    class Meta:
+        model = MainModel
+        fields = '__all__'
+
+
+class LockerModelCreateSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = MainModel
@@ -39,26 +53,16 @@ class MainModelCreateSerializer(serializers.ModelSerializer):
         return MainModel.objects.create(**validated_data)
 
 
-class GroupModelUpdateSerializer(serializers.ModelSerializer):
+class AppUserModelSerializer(serializers.ModelSerializer):
     class Meta:
-        model = GroupModel
+        model = UserModel
         fields = '__all__'
 
 
-class LockerModelUpdateSerializer(serializers.ModelSerializer):
+class AppUserModelCreateSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MainModel
+        model = UserModel
         fields = '__all__'
 
-
-class LockerModelDeleteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = MainModel
-        fields = '__all__'
-
-
-class GroupModelDeleteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = GroupModel
-        fields = '__all__'
-
+    def create(self, validated_data):
+        return UserModel.objects.create(**validated_data)
