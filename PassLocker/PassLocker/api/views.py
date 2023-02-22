@@ -1,15 +1,13 @@
 from django.contrib.auth import get_user_model
 from rest_framework import generics as rest_views
 
-
 from PassLocker.api.serializers import GroupModelSerializer, GroupModelCreateSerializer, \
     LockerModelSerializer, AppUserModelSerializer, AppUserModelCreateSerializer, LockerModelCreateSerializer
 from PassLocker.groups.models import GroupModel
 from PassLocker.main.models import MainModel
+
 UserModel = get_user_model()
 
-
-# Create your views here.
 
 class ListGroupApiView(rest_views.ListAPIView):
     queryset = GroupModel.objects.all()
@@ -93,7 +91,3 @@ class DeleteUserApiView(rest_views.RetrieveDestroyAPIView):
     queryset = UserModel.objects.all()
     serializer_class = AppUserModelSerializer
     lookup_field = "pk"
-
-
-
-

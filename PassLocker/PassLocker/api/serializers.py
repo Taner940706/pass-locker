@@ -4,20 +4,19 @@ from rest_framework import serializers
 from PassLocker.groups.models import GroupModel
 from PassLocker.main.models import MainModel
 
-
 UserModel = get_user_model()
 
 
 class ShortGroupModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = GroupModel
-        fields = '__all__'
+        fields = ('group_name', 'description',)
 
 
 class ShortUserModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserModel
-        fields = '__all__'
+        fields = ('username', 'first_name', 'last_name', 'email', 'department', 'job_level',)
 
 
 class GroupModelSerializer(serializers.ModelSerializer):
@@ -38,13 +37,13 @@ class GroupModelCreateSerializer(serializers.ModelSerializer):
 class LockerModelSerializer(serializers.ModelSerializer):
     user = ShortUserModelSerializer()
     group = ShortGroupModelSerializer()
+
     class Meta:
         model = MainModel
         fields = '__all__'
 
 
 class LockerModelCreateSerializer(serializers.ModelSerializer):
-
     class Meta:
         model = MainModel
         fields = '__all__'
